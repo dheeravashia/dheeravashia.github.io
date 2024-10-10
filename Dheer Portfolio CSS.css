@@ -1,0 +1,161 @@
+/* General styles for the body */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Background color for the entire page */
+    color: rgb(0, 0, 0); /* Default text color */
+}
+
+
+/* Header Section */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Style for the buttons in the header */
+nav ul li button {
+    background-color: transparent; /* Default button color */
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect (we'll override this with JavaScript later) */
+nav ul li button:hover {
+    background-color: #9637bd; /* Change to a slightly darker green */
+}
+
+nav ul li button.active {
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+
+/* Table Style */
+table, th, td {
+    border: 1px solid transparent;
+    border-collapse: collapse;
+    padding: 7px;
+    text-align: left;
+}
+
+/* Section Styling */
+.section-home {
+    padding: 40px; 
+    text-align: left;
+}
+
+.Research-Work {
+    padding: 10px;  
+    text-align: center;
+    margin-left: auto;
+    background-color: ghostwhite;
+}
+
+.research-grid{
+    padding: 10px; 
+    text-align: left;
+    background-color: white;    
+}
+
+.Workex {
+    padding: 10px;   
+    text-align: center;
+    margin-left: auto;
+    background-color:ghostwhite;
+}
+
+.work-grid{
+    padding: 10px; 
+    text-align: left; 
+    background-color: white;    
+}
+
+.Coursework {
+    padding: 10px;  
+    text-align: center;
+    margin-left: auto; 
+    background-color: ghostwhite;
+}
+
+.coursework-grid{
+    padding: 10px; 
+    text-align: left; 
+    background-color: white;    
+}
+
+.Technical{
+    padding: 10px;  
+    text-align: center;
+    margin-left: auto;
+    background-color: ghostwhite;
+}
+
+.tech-grid{
+    padding: 10px; 
+    text-align: left; 
+    background-color: white;  
+}
+
+.contact{
+    padding: 10px;  
+    text-align: center;
+    margin-left: auto; 
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Left-aligned image styling */
+.left-image {
+    float: left; /* Align the image to the left */
+    margin-right: 20px; /* Add space between the image and text */
+    max-width: 150px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Header content styling */
+.header-content {
+    text-align: left; /* Align text to the left */
+    margin-left: 20px; /* Optional: Add some margin to the left for spacing */
+}
+
+/* Clearfix to contain floated elements */
+.header-content::after {
+    content: "";
+    display: table;
+    clear: both; /* Clear the float */
+}
+
+/* Additional styling to ensure readability */
+h1 {
+    margin: 0; /* Remove default margin for h1 */
+    margin-bottom: 15px;
+}
+
+p {
+    margin: 0; /* Remove default margin for paragraph */
+}
