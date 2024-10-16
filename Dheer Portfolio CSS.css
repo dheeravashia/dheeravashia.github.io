@@ -112,7 +112,8 @@ table, th, td {
 .tech-grid{
     padding: 10px; 
     text-align: left; 
-    background-color: white;  
+    background-color: white; 
+    line-height: normal;
 }
 
 .contact{
