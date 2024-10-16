@@ -119,7 +119,8 @@ table, th, td {
 .contact{
     padding: 10px;  
     text-align: center;
-    margin-left: auto; 
+    margin-left: auto;
+    background-color: #f9f9f9;
 }
 /* Footer */
 footer {
@@ -162,13 +163,13 @@ p {
 }
 
 /* General Styles for Form */
-.contact {
+.contact-form{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 .contact h2 {
