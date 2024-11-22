@@ -96,6 +96,12 @@ table, th, td {
     background-color: ghostwhite;
 }
 
+.Teaching {
+    padding: 10px;   
+    text-align: center;
+    margin-left: auto;
+    background-color: white;
+}
 .coursework-grid{
     padding: 10px; 
     text-align: left; 
