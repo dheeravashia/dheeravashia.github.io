@@ -1,135 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - My Portfolio</title>
-    <link rel="stylesheet" href="Dheer Portfolio CSS.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coursework | Dheer Avashia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: #1a1a1a;
+      --background: #ffffff;
+      --text: #111;
+      --accent: #007acc;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+    header {
+      background: var(--primary-color);
+      padding: 1rem 2rem;
+      color: #fff;
+      text-align: center;
+    }
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .site-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav ul li button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-bottom 0.3s;
+    }
+    nav ul li button:hover,
+    nav ul li button.active {
+      border-bottom: 2px solid #fff;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f4f4f4;
+      font-weight: 600;
+    }
+    .cta {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .cta button {
+      padding: 0.6rem 1.4rem;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        justify-content: center;
+      }
+      section {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <ul>
-                <li><button id="homeBtn">Home</button></li>
-                <li><button id="projectsBtn">Work Experience</button></li>
-                <li><button id="certBtn" class="active">Coursework and Certificates</button></li>
-                <li><button id="contactBtn">Contact</button></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="site-title">Dheer Avashia</a>
+      <nav>
+        <ul>
+          <li><button id="homeBtn">Home</button></li>
+          <li><button id="projectsBtn">Work Experience</button></li>
+          <li><button id="certBtn" class="active">Coursework</button></li>
+          <li><button id="contactBtn">Contact</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <section>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <h2 style="margin: 0;">Technical Skills</h2>
+        <a href="https://github.com/dheeravashia" target="_blank">
+          <button style="padding: 0.6rem 1.2rem; background-color: var(--accent); color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">View My GitHub</button>
+        </a>
+      </div>
+    <table>
+      <tr>
+        <th>Programming</th>
+        <th>Data/Analysis Tools</th>
+        <th>Other Tools</th>
+      </tr>
+      <tr>
+        <td>Python</td>
+        <td>SPSS Statistics</td>
+        <td>Microsoft Office</td>
+      </tr>
+      <tr>
+        <td>Julia</td>
+        <td>STATA</td>
+        <td>Garageband</td>
+      </tr>
+      <tr>
+        <td>R</td>
+        <td>Power BI (intermediate)</td>
+        <td>Stat-key</td>
+      </tr>
+      <tr>
+        <td>HTML</td>
+        <td>Qualtrics</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>LaTeX</td>
+        <td>Mathematica</td>
+        <td></td>
+      </tr>
+    </table>
 
-    <section class="Coursework">
-        <h2>Coursework</h2>
-        <div class="coursework-grid">
-            <div class="masters-item">
-                <h3><u>Masters Coursework</u></h3>
-                <p>
-                    <table>
-                        <tr>
-                            <th><u>Quantitative/Applied</u></th>
-                            <th><u>Theory</u></th>
-                        </tr>
-                        <tr>
-                            <td><strong>Applied Economic Analysis:</strong> Ridge/LASSO, LATE, Bivariate Probability Models, Forecasting, ARCH and GARCH.</td>
-                            <td><strong>Econometric Theory:</strong> MLE, GMM estimation, Kernel estimation, Bootstrap, Jackknife.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Experimental Economics:</strong> Individual Decision Making, Social Preferences, Strategic Interactions, Markets. </td>
-                            <td><strong>Advanced Game-Theory: </strong> Communication, Cheap Talk, Nash Refinements, Heterogeneous Information, Bayesian Updating.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Industrial-organizational Economics:</strong> Demand Estimation, Search Models, Upstream/Downstream contracts.</td>
-                            <td><strong>Microeconomic Theory:</strong> Preferences, Utility Maximisation, Expected Utility Theory.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Computational Methods in Dynamic Models:</strong> Bellman Equations, Discrete and Continous Time and Choice Models </td>
-                            <td><strong>Mechanism Design:</strong> Auction Theory, Public Goods, Bilateral trade.</td>
-                    </table>
-                </p>
-            </div>
-            <div class="b-item">
-                <h3><u>BSc Coursework</u></h3>
-                <table>
-                    <tr>
-                        <th>Mathematics</th>
-                        <th>Economics</th>
-                        <th>Psychology</th>
-                    </tr>
-                    <tr>
-                        <td>Linear Algebra (A)</td>
-                        <td>Microeconomic Theory (A)</td>
-                        <td>Research Methods and Data Analysis (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Multidimensional Calculus (A-) </td>
-                        <td>Labor Economics (A)</td>
-                        <td>Child development (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Differential Equations (A)</td>
-                        <td>Industrial Organizational Economics (A)</td>
-                        <td>Cognitive Psychology (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Abstract Algebra 1 (A)</td>
-                        <td>Game Theory (A)</td>
-                        <td>Action Research Lab (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Abstract Algebra 2 (A) </td>
-                        <td>Econometrics (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Real Analysis (A-)</td>
-                        <td>Seminar (Pass with distinction)</td>
-                    </tr>
-                    <tr>
-                        <td>Probability Statistics (A)</td>
-                    </tr>
-                    <tr>
-                        <td>Time Series (A)</td>
-                    </tr>
-                </table>
-            
-            </div>
-        </div>
-    </section>
-    <section class="Technical">
-        <h2>Technical Skills</h2>
-        <div class="tech-grid">
-            <p>
-                    <li> Python </li>
-                    <li> Julia </li> 
-                    <li>SPSS Statistics</li> 
-                    <li>STATA</li>
-                    <li>R</li>
-                    <li>LaTeX</li>
-                    <li>Mathematica</li>
-                    <li>Qualtrics</li>
-                    <li>Stat-key</li>
-                    <li>Power BI (intermediate)</li>
-                    <li>Microsoft office</li>
-                    <li>HTML</li>
-                    <li>Garageband</li>
-               
-            </p>
-            <!-- GIT Button -->
-             <a href="https://github.com/dheeravashia" target="_blank">
-                <button style="margin-top: 20px; padding: 10px 20px; font-size: 16px;">Github</button>
-            </a>
-        </div>
-    </section>
+    <h2>Graduate Coursework</h2>
+    <table>
+      <tr>
+        <th>Quantitative/Applied</th>
+        <th>Theory</th>
+      </tr>
+      <tr>
+        <td><strong>Applied Economic Analysis:</strong> Ridge/LASSO, LATE, Bivariate Probability Models, Forecasting, ARCH and GARCH.</td>
+        <td><strong>Econometric Theory:</strong> MLE, GMM estimation, Kernel estimation, Bootstrap, Jackknife.</td>
+      </tr>
+      <tr>
+        <td><strong>Experimental Economics:</strong> Individual Decision Making, Social Preferences, Strategic Interactions, Markets. </td>
+        <td><strong>Advanced Game-Theory: </strong> Communication, Cheap Talk, Nash Refinements, Heterogeneous Information, Bayesian Updating.</td>
+      </tr>
+      <tr>
+        <td><strong>Industrial-organizational Economics:</strong> Demand Estimation, Search Models, Upstream/Downstream contracts.</td>
+        <td><strong>Microeconomic Theory:</strong> Preferences, Utility Maximisation, Expected Utility Theory.</td>
+      </tr>
+      <tr>
+        <td><strong>Computational Methods in Dynamic Models:</strong> Bellman Equations, Discrete and Continous Time and Choice Models</td>
+        <td><strong>Mechanism Design:</strong> Auction Theory, Public Goods, Bilateral trade.</td>
+      </tr>
+    </table>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Dheer Avashia. All rights reserved.</p>
-    </footer>
+    <h2>BSc Coursework</h2>
+    <table>
+      <tr>
+        <th>Mathematics</th>
+        <th>Economics</th>
+        <th>Psychology</th>
+      </tr>
+      <tr>
+        <td>Linear Algebra</td>
+        <td>Microeconomic Theory</td>
+        <td>Research Methods and Data Analysis</td>
+      </tr>
+      <tr>
+        <td>Multidimensional Calculus </td>
+        <td>Labor Economics </td>
+        <td>Child Development</td>
+      </tr>
+      <tr>
+        <td>Differential Equations</td>
+        <td>Industrial Organizational Economics</td>
+        <td>Cognitive Psychology</td>
+      </tr>
+      <tr>
+        <td>Abstract Algebra 1</td>
+        <td>Game Theory</td>
+        <td>Action Research Lab</td>
+      </tr>
+      <tr>
+        <td>Abstract Algebra 2</td>
+        <td>Econometrics</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Real Analysis </td>
+        <td>Seminar (Pass with distinction)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Probability Statistics</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Time Series </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </section>
 
-    <!-- Include JavaScript -->
-    <script src="Dheer Portfoilio JS.js"></script>
+  <footer>&copy; 2024 Dheer Avashia. All rights reserved.</footer>
 
+  <script>
+    const navLinks = [
+      { id: 'homeBtn', url: 'index.html' },
+      { id: 'projectsBtn', url: 'Dheer Portfolio Projects.html' },
+      { id: 'certBtn', url: 'Dheer Portfolio Coursework.html' },
+      { id: 'contactBtn', url: 'Dheer Portfolio Contact.html' },
+    ];
+    navLinks.forEach(({ id, url }) => {
+      const btn = document.getElementById(id);
+      btn.addEventListener('click', () => window.location.href = url);
+    });
+  </script>
 </body>
 </html>
