@@ -26,10 +26,21 @@
         header {
             background: var(--primary-color);
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             color: #fff;
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
         }
         nav ul {
             display: flex;
@@ -109,15 +120,17 @@
 <body>
 
     <header>
-        <h2>Dheer Avashia</h2>
-        <nav>
-            <ul>
-                <li><button id="homeBtn" class="active">Home</button></li>
-                <li><button id="projectsBtn">Work Experience</button></li>
-                <li><button id="certBtn">Coursework</button></li>
-                <li><button id="contactBtn">Contact</button></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <a href="index.html" class="site-title">Dheer Avashia</a>
+            <nav>
+                <ul>
+                    <li><button id="homeBtn" class="active">Home</button></li>
+                    <li><button id="projectsBtn">Work Experience</button></li>
+                    <li><button id="certBtn">Coursework</button></li>
+                    <li><button id="contactBtn">Contact</button></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="section-home">
