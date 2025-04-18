@@ -22,6 +22,7 @@
             font-family: 'Inter', sans-serif;
             background: var(--background);
             color: var(--text);
+            overflow-x: hidden;
         }
         header {
             background: var(--primary-color);
@@ -46,6 +47,8 @@
             display: flex;
             list-style: none;
             gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         nav ul li button {
             background: none;
@@ -78,6 +81,13 @@
         }
         .header-content {
             flex: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .header-content.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .header-content h1 {
             font-size: 2.5rem;
@@ -115,6 +125,15 @@
             padding: 1.5rem;
             font-size: 0.9rem;
         }
+        @media (max-width: 768px) {
+            .section-home {
+                flex-direction: column;
+                text-align: center;
+            }
+            .left-image {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -135,7 +154,7 @@
 
     <section class="section-home">
         <img src="IMG_8641_OG - Copy.JPEG" alt="Dheer" class="left-image">
-        <div class="header-content">
+        <div class="header-content" id="revealContent">
             <h1>Hello, I'm Dheer Avashia</h1>
             <p>I have a strong aptitude for analytical thinking and a passion for solving problems. My background in Mathematics and Economics, paired with hands-on experience in data analysis and modeling, helps me deliver data-driven solutions. I'm driven by curiosity, always eager to grow, and strive for leadership roles that challenge me.</p>
             <p>Explore my <a href="Dheer Portfolio Coursework.html">skills</a>, see my <a href="Dheer Portfolio Projects.html">projects</a>, or <a href="Dheer Portfolio Contact.html">get in touch</a>.</p>
@@ -161,6 +180,12 @@
             btn.addEventListener('click', () => {
                 window.location.href = url;
             });
+        });
+
+        // Reveal animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('revealContent');
+            content.classList.add('visible');
         });
     </script>
 </body>
