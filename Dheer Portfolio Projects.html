@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Work Experience | Dheer Avashia</title>
+  <title>Projects | Dheer Avashia</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -26,8 +26,8 @@
     header {
       background: var(--primary-color);
       padding: 1rem 2rem;
-      color: #fff;
       text-align: center;
+      color: #fff;
     }
     .header-container {
       display: flex;
@@ -64,30 +64,39 @@
       padding: 2rem;
       max-width: 1000px;
       margin: auto;
+      animation: fadeInUp 1s ease forwards;
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeInUp 1s ease forwards;
     }
     h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
       color: var(--primary-color);
+      text-align: center;
     }
-    .content-block {
+    .block {
       margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.03);
     }
-    .content-block h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.25rem;
+    .block h3 {
       color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
     }
-    .content-block h4 {
-      font-size: 1rem;
+    .block h4 {
       color: #444;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+    .block p,
+    .block ul {
       margin-bottom: 0.5rem;
     }
-    .content-block ul {
-      padding-left: 1rem;
+    .block ul {
+      padding-left: 1.5rem;
     }
     footer {
       background: #222;
@@ -114,64 +123,135 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="site-title">Dheer Avashia</a>
-      <nav>
-        <ul>
-          <li><button id="homeBtn">Home</button></li>
-          <li><button id="projectsBtn" class="active">Work Experience</button></li>
-          <li><button id="certBtn">Coursework</button></li>
-          <li><button id="contactBtn">Contact</button></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section>
-    <h2>Work Experience & Research</h2>
-
-    <div class="content-block">
-      <h3>Economics Thesis (Hons.)</h3>
-      <h4>University of the South & University of Arizona (2022 – Present)</h4>
+<header>
+  <div class="header-container">
+    <a href="index.html" class="site-title">Dheer Avashia</a>
+    <nav>
       <ul>
-        <li>Studied the availability heuristic and its effects on financial overconfidence</li>
-        <li>Used empirical models to explore subjective vs. objective financial knowledge</li>
+        <li><button id="homeBtn">Home</button></li>
+        <li><button id="projectsBtn" class="active">Work Experience</button></li>
+        <li><button id="certBtn">Coursework</button></li>
+        <li><button id="contactBtn">Contact</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <h2>Research Experience</h2>
+
+  <div class="block">
+    <h3><a href="https://github.com/dheeravashia/dheeravashia.github.io/blob/main/Overconfidence%20and%20Shocks.pdf">Economics Thesis (Hons.)</a></h3>
+    <h4>Economics Department, University Of The South, Sewanee TN ​| Economics Department, University Of Arizona, Tucson AZ | August 2022 - present</h4>
+    <p>I am fascinated by the decision-making framework proposed by <a href="https://thedecisionlab.com/thinkers/economics/daniel-kahneman">Khaneman and Trvskey</a> in the late 1900s. In this research project, I specifically look at the empirical prevalence of the <a href="https://www.sciencedirect.com/science/article/pii/0010028573900339">availability heuristic</a> and whether it can explain the disparity between subjective and objective financial knowledge (overconfidence)...</p>
+  </div>
+
+  <div class="block">
+    <h3><a href="https://github.com/dheeravashia/dheeravashia.github.io/blob/main/Huffman%20Encoding%20Problem.pdf">The Theory of Huffman Encoding</a></h3>
+    <h4>Mathematics Department | Sewanee, TN | August 2022 - May 2023</h4>
+    <ul>
+      <li>Examined and synthesized theories of Algorithmic Information Theory. Understood functions and mechanisms of Turing Machines. Understood fundamental information theory concepts of Probability, Entropy, and Complexity</li>
+      <li>Researched Huffman's Encoding Problem, analyzed proofs of optimal lossless encoding, theories of fundamental binary data encoding, and studied Huffman trees</li>
+      <li>Used Beamer (LaTeX) to present a talk on the Huffman Encoding problem, emphasizing the significance and importance of Huffman's algorithm on modern-day information encoding</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3><a href="https://github.com/dheeravashia/dheeravashia.github.io/blob/main/Information%2C%20Speculation%20And%20Bubble%20Formation%20In%20Experimental%20Crypto-Currency%20Markets.pdf">Economics Researcher</a></h3>
+    <h4>Sewanee Undergraduate Research, Sewanee TN. | May 2021 - August 2021</h4>
+    <ul>
+      <li>Funded to conduct a literature review of over 8 laboratory research papers studying price bubbles and crashes in spot asset markets. Learned how to survey, analyze, condense, and present research findings</li>
+      <li>Wrote a survey paper in conjunction with a laboratory experiment proposal, under the guidance of a faculty member, suggesting how researchers could study bubbles and crashes in crypto-currency markets</li>
+      <li>Learnt how to read and analyze existing research effectively</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3><a href="https://github.com/dheeravashia/dheeravashia.github.io/blob/main/Dheer%20Avashia%20Orthorexia%20Nervosa.docx.pdf">Psychology Research Fellow</a></h3>
+    <h4>Psychology Department, University Of The South, Sewanee, TN | January 2021 - May 2021</h4>
+    <ul>
+      <li>Adopted Qualtrics to collect qualitative and quantitative primary-source data about eating disorders, social media usage, and imaginary audience using 5 psychological inventories</li>
+      <li>Employed SPSS to generate interaction terms and perform robust regressions, f-tests, and chi-squared tests for 200 data points, modeling a function predicting the prevalence of eating disorders as a function of social media usage</li>
+      <li>Authored a research paper, and presented insights at a local research conference</li>
+    </ul>
+  </div>
+
+  <h2>Work Experience</h2>
+
+  <div class="work-grid">
+    <div class="block">
+      <h3>User Experience & Marketing</h3>
+      <h4>Sayaji Seeds, Ahmedabad, India | April 2020 - August 2020</h4>
+      <ul>
+        <li>Researched business models and digital strategies of firms catering to the Indian rural market.</li>
+        <li>Conceptualized and implemented, alongside the CEO, the marketing strategy for promoting the company's new mobile application, reaching over 2000 potential clients</li>
+        <li>Created KPI metrics, alongside CEO and UX designers, for a pilot study helping measure user accessibility and retention for the company's new mobile application, which now has over 5000 users</li>
+        <li>Researched and presented a comprehensive report on rural marketing. Worked with digital marketing head to run ad campaigns (Google ads, IVR, on-ground marketing) increasing users by 20%</li>
       </ul>
     </div>
-
-    <div class="content-block">
-      <h3>Theory of Huffman Encoding</h3>
-      <h4>Sewanee Mathematics Dept. (2022 – 2023)</h4>
+  
+    <div class="block">
+      <h3>Business Strategy & Content Production</h3>
+      <h4>Connect2Teach, Ahmedabad, India | March 2019 - August 2019</h4>
       <ul>
-        <li>Presented research on binary encoding, entropy, and information theory</li>
-        <li>Used LaTeX Beamer to deliver talk on optimal compression algorithms</li>
+        <li>Analyzed business-to-business models and growth strategy of 10 major companies in the online learning industry. Generated user profiles and identified key trends in the executive learning industry and presented insights to CEO</li>
+        <li>Built several user profiles and led presentations on ideas for optimizing the company's product</li>
+        <li>Authored, edited, and published over 5 articles for on and off-page blogging</li>
+        <li>Ran ads and performed SEO optimizing, alongside the Digital marketing team, boosting social media followers by 30%</li>
       </ul>
     </div>
-
-    <div class="content-block">
-      <h3>Marketing Intern – Sayaji Seeds</h3>
-      <h4>Ahmedabad, India (Apr 2020 – Aug 2020)</h4>
+  
+    <div class="block">
+      <h3>VP Recruitment & Greek Life Assistant</h3>
+      <h4><a href="https://issuu.com/sewaneegreeklife/docs/greek_life_annual_report_final">University Of The South Greek Life Office</a>, Sewanee TN | August 2021 - May 2023</h4>
       <ul>
-        <li>Launched digital outreach campaigns for a rural-focused agri-tech app</li>
-        <li>Collaborated on KPI design for user retention metrics</li>
+        <li>Assisted the director of Greek Life in everyday tasks</li>
+        <li>Created forms and surveys to gather data about Greek life organizations on campus, used Excel to format and present data to the head of Greek life</li>
+        <li>Planned a <a href="https://new.sewanee.edu/hazing/">hazing prevention</a> marketing campaign to create awareness about hazing and provide resources</li>
+        <li>Making the Greek Life culture on campus safer and more welcoming</li>
       </ul>
     </div>
-  </section>
+  
+    <div class="block">
+      <h3>Residential Assistant</h3>
+      <h4>University of The South Residential Life office, Sewanee TN | January 2021 - May 2023</h4>
+      <ul>
+        <li>Designed and implemented over 15 programs to foster relationships and make residents feel safe and comfortable in residential spaces</li>
+        <li>Applied QPR training and restorative techniques to help extinguish sensitive situations and resolve conflicts</li>
+        <li>Acted as a student leader and role model for over 200 residents cultivating living spaces with a strong sense of community</li>
+        <li>One of the most esteemed leadership positions on campus</li>
+        <li>Supervised residence halls with over 150 students, responded to emergencies, and reported to supervisor</li>
+      </ul>
+    </div>
+  
+    <div class="block">
+      <h3>Marketing Intern</h3>
+      <h4>University of the South Wellness Center, Sewanee, TN | September 2019 - August 2021</h4>
+      <ul>
+        <li>Researched student taboos surrounding mental health, evaluated data to devise a social media marketing plan and content calendar, increased student interaction and awareness by over 30%</li>
+        <li>Collaborated with the director of the Wellness Center and student leaders on campus to plan and implement 11 events promoting mental health awareness</li>
+      </ul>
+    </div>
+  </div>
+  
 
-  <footer>&copy; 2024 Dheer Avashia. All rights reserved.</footer>
+</section>
 
-  <script>
-    const navLinks = [
-      { id: 'homeBtn', url: 'index.html' },
-      { id: 'projectsBtn', url: 'Dheer Portfolio Projects.html' },
-      { id: 'certBtn', url: 'Dheer Portfolio Coursework.html' },
-      { id: 'contactBtn', url: 'Dheer Portfolio Contact.html' },
-    ];
-    navLinks.forEach(({ id, url }) => {
-      const btn = document.getElementById(id);
-      btn.addEventListener('click', () => window.location.href = url);
-    });
-  </script>
+<footer>&copy; 2024 Dheer Avashia. All rights reserved.</footer>
+
+<script>
+  const navLinks = [
+    { id: 'homeBtn', url: 'index.html' },
+    { id: 'projectsBtn', url: 'Dheer Portfolio Projects.html' },
+    { id: 'certBtn', url: 'Dheer Portfolio Coursework.html' },
+    { id: 'contactBtn', url: 'Dheer Portfolio Contact.html' },
+  ];
+  navLinks.forEach(({ id, url }) => {
+    const btn = document.getElementById(id);
+    btn.addEventListener('click', () => window.location.href = url);
+  });
+</script>
+
 </body>
 </html>
