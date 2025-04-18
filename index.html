@@ -3,48 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="Dheer Portfolio CSS.css">
+    <title>Dheer Avashia | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #9637bd;
+            --background: #f9f9f9;
+            --text: #333;
+            --accent: #6d198f;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+        header {
+            background: var(--primary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        nav ul li button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-bottom 0.3s;
+        }
+        nav ul li button:hover,
+        nav ul li button.active {
+            border-bottom: 2px solid #fff;
+        }
+        .section-home {
+            padding: 3rem 2rem;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .left-image {
+            width: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            flex: 1;
+        }
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .header-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .header-content a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .cta {
+            margin-top: 2rem;
+        }
+        .cta button {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .cta button:hover {
+            background: var(--accent);
+        }
+        footer {
+            background: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
+        <h2>Dheer Avashia</h2>
         <nav>
             <ul>
                 <li><button id="homeBtn" class="active">Home</button></li>
                 <li><button id="projectsBtn">Work Experience</button></li>
-                <li><button id="certBtn">Coursework and Certificates</button></li>
+                <li><button id="certBtn">Coursework</button></li>
                 <li><button id="contactBtn">Contact</button></li>
             </ul>
         </nav>
     </header>
 
     <section class="section-home">
+        <img src="IMG_8641_OG - Copy.JPEG" alt="Dheer" class="left-image">
         <div class="header-content">
-            <img src="IMG_8641_OG - Copy.JPEG" alt="Dheer" class="left-image"> <!-- Left-aligned image -->
             <h1>Hello, I'm Dheer Avashia</h1>
-            <p>I have a strong aptitude for analytical thinking and a passion for solving problems.
-            My strong background in Mathematics and Economics, coupled with first-hand experience in data analysis and 
-            statistical modeling has equipped me with skills to tackle complex issues with data-driven solutions. I am 
-            a leader who thrives in challenging environments and is driven by my curiosity to constantly keep learning and growing.
-            In the next decade, I envision myself in a leadership role at a company that continually evolves and challenges me to find 
-            solutions to complex challenges.</p><br>
-            <p>Here is <a href="Dheer Portfolio Coursework.html">what I know</a>, here is where I <a href="Dheer Portfolio Projects.html">applied what I knew</a> to learn more, and if it fits what you are looking for, here is how you can <a href="Dheer Portfolio Contact.html">give me the opportunity to do more of that.</a></p> 
-             <!-- LinkedIn Button -->
-            <a href="https://www.linkedin.com/in/dheeravashia" target="_blank">
-                <button style="margin-top: 20px; padding: 10px 20px; font-size: 16px;">LinkedIn Profile</button>
-            </a>
+            <p>I have a strong aptitude for analytical thinking and a passion for solving problems. My background in Mathematics and Economics, paired with hands-on experience in data analysis and modeling, helps me deliver data-driven solutions. I'm driven by curiosity, always eager to grow, and strive for leadership roles that challenge me.</p>
+            <p>Explore my <a href="Dheer Portfolio Coursework.html">skills</a>, see my <a href="Dheer Portfolio Projects.html">projects</a>, or <a href="Dheer Portfolio Contact.html">get in touch</a>.</p>
+            <div class="cta">
+                <a href="https://www.linkedin.com/in/dheeravashia" target="_blank"><button><i class="fab fa-linkedin"></i> LinkedIn Profile</button></a>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Dheer Avashia . All rights reserved.</p>
+        &copy; 2024 Dheer Avashia. All rights reserved.
     </footer>
 
-    <!-- Include JavaScript -->
-    <script src="Dheer Portfoilio JS.js"></script>
-
+    <script>
+        const navLinks = [
+            { id: 'homeBtn', url: 'index.html' },
+            { id: 'projectsBtn', url: 'Dheer Portfolio Projects.html' },
+            { id: 'certBtn', url: 'Dheer Portfolio Coursework.html' },
+            { id: 'contactBtn', url: 'Dheer Portfolio Contact.html' },
+        ];
+        navLinks.forEach(({ id, url }) => {
+            const btn = document.getElementById(id);
+            btn.addEventListener('click', () => {
+                window.location.href = url;
+            });
+        });
+    </script>
 </body>
 </html>
