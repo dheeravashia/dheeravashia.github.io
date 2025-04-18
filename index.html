@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #9637bd;
-            --background: #f9f9f9;
-            --text: #333;
-            --accent: #6d198f;
+            --primary-color: #1a1a1a;
+            --background: #ffffff;
+            --text: #111;
+            --accent: #007acc;
         }
         * {
             box-sizing: border-box;
@@ -59,10 +59,11 @@
             flex-wrap: wrap;
         }
         .left-image {
-            width: 180px;
-            border-radius: 50%;
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
         }
         .header-content {
             flex: 1;
@@ -85,7 +86,7 @@
         }
         .cta button {
             padding: 0.75rem 1.5rem;
-            background: var(--primary-color);
+            background: var(--accent);
             border: none;
             color: #fff;
             font-size: 1rem;
@@ -94,7 +95,7 @@
             transition: background 0.3s ease;
         }
         .cta button:hover {
-            background: var(--accent);
+            background: #005fa3;
         }
         footer {
             background: #222;
