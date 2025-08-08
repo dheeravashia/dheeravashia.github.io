@@ -55,7 +55,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ===== Scrollspy (gradient accent remains) =====
-const sections = ['#about', '#research', '#experience', '#coursework', '#contact']
+const sections = ['#research', '#experience', '#coursework', '#contact']
   .map(sel => document.querySelector(sel))
   .filter(Boolean);
 
@@ -78,3 +78,4 @@ const spy = new IntersectionObserver((entries) => {
   threshold: [0.2, 0.5, 1.0]
 });
 sections.forEach(s => spy.observe(s));
+
