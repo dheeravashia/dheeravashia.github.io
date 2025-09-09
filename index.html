@@ -82,10 +82,13 @@
 
     .brand {
       display: inline-grid; place-items: center;
-      width: 42px; height: 42px; border-radius: 12px;
+      min-width: clamp(44px, 8vw, 56px);
+      height: clamp(44px, 8vw, 56px);
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #0b1020; text-decoration: none; font-weight: 800;
-      letter-spacing: .5px; box-shadow: var(--shadow);
+      letter-spacing: .8px; box-shadow: var(--shadow);
+      font-size: clamp(.9rem, 2.8vw, 1.1rem); /* prevents text from feeling cramped */
     }
 
     .nav-links { display: flex; gap: .75rem; align-items: center; }
