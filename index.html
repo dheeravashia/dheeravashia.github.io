@@ -28,10 +28,8 @@
       --radius: 14px;
 
       --container-xs: 680px;
-      --container-sm: 880px;
       --container-md: 1120px;
       --container-lg: 1280px;
-      --container-xl: 1560px; /* ultra-wide desktops */
 
       --step--1: clamp(.78rem, .75rem + .2vw, .9rem);
       --step-0: clamp(.95rem, .9rem + .3vw, 1.05rem);
@@ -70,7 +68,6 @@
     /* Containers */
     .container { width: min(92%, var(--container-md)); margin-inline: auto; }
     @media (min-width: 1440px) { .container { width: min(90%, var(--container-lg)); } }
-    @media (min-width: 1800px) { .container { width: min(85%, var(--container-xl)); } }
 
     /* ============= NAVBAR (glass + autohide) ============= */
     .nav {
@@ -116,8 +113,8 @@
 
     /* ================= HERO ================= */
     .hero { padding: 5rem 0 3rem; }
-    .hero-grid { display: grid; gap: 2rem; align-items: center; grid-template-columns: 1.1fr .9fr; }
-    @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
+    .hero-grid { display: grid; gap: 2rem; align-items: center; grid-template-columns: .9fr 1.1fr; }
+    @media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } }
 
     .headline { font-size: var(--step-4); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 .75rem; }
     .accent { background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -133,17 +130,21 @@
     }
     .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
     .btn:active { transform: translateY(0); }
-    .btn-ghost { background: transparent; color: var(--text); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-ghost:hover { background: var(--surface-2); }
+
+    /* High-contrast LinkedIn brand button */
+    .btn.linkedin, .btn[href*="github.com"] { background: #0077b5; color: #fff; border-color: #0077b5; }
+    [data-theme="light"] .btn.linkedin, [data-theme="light"] .btn[href*="github.com"] { background: #0077b5; color: #fff; border-color: #0077b5; }
 
     .hero-media { display: grid; place-items: center; }
     .hero-media img {
-      width: min(320px, 80%); aspect-ratio: 1/1; object-fit: cover;
+      width: clamp(220px, 28vw, 420px); aspect-ratio: 1/1; object-fit: cover;
       border-radius: 20px; border: 1px solid var(--border);
       box-shadow: 0 8px 30px rgba(0,0,0,.35);
     }
 
-    /* ============= Sections & Titles (remove ellipse) ============= */
+    /* ============= Sections & Titles (no ellipse) ============= */
     .section { padding: 2.5rem 0; }
     .section-title { margin: 2.5rem 0 1rem; }
     .section-title span {
@@ -239,6 +240,10 @@
   <!-- ===== HERO ===== -->
   <section id="top" class="hero container">
     <div class="hero-grid">
+      <div class="hero-media reveal">
+        <img src="Images/IMG_8641-removebg- SQUARE.png" alt="Portrait of Dheer Avashia"
+             loading="eager" decoding="async" fetchpriority="high" />
+      </div>
       <div class="hero-text reveal">
         <h1 class="headline">Hello, I'm <span class="accent">Dheer Avashia</span></h1>
         <p class="lead">
@@ -248,13 +253,9 @@
           Explore my <a href="#coursework">skills</a>, see my <a href="#research">projects</a>, or get in touch.
         </p>
         <div class="cta-row">
-          <a class="btn" href="https://www.linkedin.com/in/dheeravashia" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn linkedin" href="https://www.linkedin.com/in/dheeravashia" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn btn-ghost" href="https://eller.arizona.edu/person/dheer-avashia">Contact</a>
         </div>
-      </div>
-      <div class="hero-media reveal">
-        <img src="Images/IMG_8641-removebg- SQUARE.png" alt="Portrait of Dheer Avashia"
-             loading="eager" decoding="async" fetchpriority="high" />
       </div>
     </div>
   </section>
@@ -264,8 +265,7 @@
   <!-- ===== RESEARCH ===== -->
   <section id="research" class="section container">
     <h2 class="section-title"><span>Research Work</span></h2>
-
-    <article class="card reveal">
+        <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">The Impact of AI-generated Review Summaries: Evidence From Indian E-Commerce</h3>
         <p class="meta">Economics Department, University Of Arizona, Tucson AZ </p>
@@ -525,7 +525,7 @@
     const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initial = stored || (preferDark ? 'dark' : 'light');
     if (initial === 'light') root.setAttribute('data-theme', 'light');
-    toggle.checked = initial === 'light';
+    if (toggle) toggle.checked = initial === 'light';
     toggle?.addEventListener('change', () => {
       const mode = toggle.checked ? 'light' : 'dark';
       root.setAttribute('data-theme', mode === 'light' ? 'light' : '');
