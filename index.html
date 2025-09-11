@@ -222,6 +222,19 @@
       .nav, .btn, .switch, .back-to-top { display: none !important; }
       .card { box-shadow: none; border-color: #ddd; }
     }
+      /* ===== Abstract dropdown (research only) ===== */
+    #research .abstract { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    #research .abstract.open { /* max-height set inline via JS for smooth animation */ }
+    #research .abstract-toggle {
+      display: inline-flex; align-items: center; gap: .4rem; cursor: pointer;
+      padding: .4rem .65rem; border-radius: 10px; border: 1px solid var(--border);
+      background: transparent; color: var(--text); font-weight: 600;
+      transition: background .2s ease, border-color .2s ease, transform .12s ease;
+    }
+    #research .abstract-toggle:hover { background: var(--surface-2); border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); }
+    #research .abstract-toggle .chev { display:inline-block; transition: transform .2s ease; }
+    #research .abstract-toggle[aria-expanded="true"] .chev { transform: rotate(90deg); }
+
   </style>
 </head>
 
@@ -568,6 +581,60 @@
     };
     addEventListener('scroll', setActive, { passive: true });
     addEventListener('load', setActive);
+
+    // ===== Add collapsible abstracts to Research cards (no style changes elsewhere) =====
+    (function(){
+      const cards = document.querySelectorAll('#research .card');
+      cards.forEach(card => {
+        const header = card.querySelector('.card-header');
+        if (!header) return;
+        // Find the first paragraph or list immediately following the header
+        let candidate = header.nextElementSibling;
+        while (candidate && !(candidate.tagName === 'P' || candidate.tagName === 'UL')) {
+          // Stop if we reach links row or another header/article
+          if (candidate.classList?.contains('links') || candidate.tagName === 'HEADER' || candidate.tagName === 'ARTICLE') return;
+          candidate = candidate.nextElementSibling;
+        }
+        if (!candidate) return;
+        // Heuristic: only collapse if it's not the simple links row and has some content
+        const textLen = candidate.textContent.trim().length;
+        if (textLen < 80) return; // skip very short blurbs
+
+        // Mark as abstract and collapse
+        candidate.classList.add('abstract');
+        candidate.style.maxHeight = '0px';
+
+        // Insert toggle button before it
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'abstract-toggle';
+        btn.setAttribute('aria-expanded','false');
+        btn.innerHTML = '<span class="chev">▶</span><span class="label">Read abstract</span>';
+        candidate.parentNode.insertBefore(btn, candidate);
+
+        // Toggle behavior
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            candidate.style.maxHeight = '0px';
+            candidate.classList.remove('open');
+            btn.setAttribute('aria-expanded','false');
+            btn.querySelector('.label').textContent = 'Read abstract';
+          } else {
+            candidate.style.maxHeight = candidate.scrollHeight + 'px';
+            candidate.classList.add('open');
+            btn.setAttribute('aria-expanded','true');
+            btn.querySelector('.label').textContent = 'Hide abstract';
+          }
+        });
+        // Recompute height on window resize if open
+        window.addEventListener('resize', () => {
+          if (btn.getAttribute('aria-expanded') === 'true') {
+            candidate.style.maxHeight = candidate.scrollHeight + 'px';
+          }
+        });
+      });
+    })();
 
   </script>
 </body>
