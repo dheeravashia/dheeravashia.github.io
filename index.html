@@ -160,10 +160,12 @@
     .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
     .chip, .link-badge {
       display: inline-flex; align-items: center; gap: .35rem; text-decoration: none;
-      font-weight: 600; padding: .45rem .7rem; border-radius: 10px;
+      font-weight: 600; padding: .35rem .55rem; /* compact */
+      border-radius: 8px;
       border: 1px solid var(--border); color: var(--text);
       background: var(--surface-2);
       transition: border-color .2s ease, background .2s ease, transform .12s ease;
+      font-size: var(--step--1);
     }
     .chip:hover { border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); transform: translateY(-1px); }
 
@@ -211,15 +213,6 @@
     :root:not([data-theme="light"]) .table .h4 { color: #f1f4fa; }
     :root:not([data-theme="light"]) ul.tight li { color: #e6ebf5; }
     :root:not([data-theme="light"]) .section-title span { border-bottom-width: 3px; }
-  
-
-    /* ===== Size tweaks for Slides/Paper chips ===== */
-    .links { gap: .4rem; }
-    .chip, .link-badge {
-      padding: .35rem .55rem;           /* smaller */
-      font-size: var(--step--1);        /* slightly smaller text */
-      border-radius: 8px;               /* a touch tighter */
-    }
 
     /* ===== Responsive refinements (desktop → phone) ===== */
     @media (max-width: 1200px) {
@@ -242,6 +235,24 @@
       .links { gap: .35rem; }
       .hero-media img { width: min(68vw, 320px); }
     }
+
+    /* ===== Research abstract dropdown (minimalist) ===== */
+    #research .abstract { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    #research .abstract.open { /* height set inline via JS */ }
+    #research .abstract-toggle {
+      display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
+      padding:.35rem .6rem; border-radius:8px; border:1px solid var(--border);
+      background: transparent; color: var(--text); font-weight:600;
+      transition: background .2s ease, border-color .2s ease, transform .12s ease;
+    }
+    #research .abstract-toggle:hover { background: var(--surface-2); }
+    #research .abstract-toggle .chev { display:inline-block; transition: transform .2s ease; }
+    #research .abstract-toggle[aria-expanded="true"] .chev { transform: rotate(90deg); }
+
+    /* ===== Compact, consistent spacing around abstracts & links ===== */
+    #research .abstract-toggle { margin-bottom: .55rem; }
+    #research .abstract { margin-top: .35rem; }
+    #research .links { margin-top: .65rem; }
 
   </style>
 </head>
@@ -586,8 +597,7 @@
         btn.type = 'button';
         btn.className = 'abstract-toggle';
         btn.setAttribute('aria-expanded','false');
-        btn.textContent = 'Read abstract';
-        btn.style.cssText = 'display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;padding:.4rem .65rem;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);font-weight:600';
+        btn.innerHTML = '<span class="chev">▶</span><span class="label">Read abstract</span>';
         candidate.parentNode.insertBefore(btn, candidate);
         btn.addEventListener('click', () => {
           const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -595,12 +605,12 @@
             candidate.style.maxHeight = '0px';
             candidate.classList.remove('open');
             btn.setAttribute('aria-expanded','false');
-            btn.textContent = 'Read abstract';
+            btn.querySelector('.label').textContent = 'Read abstract';
           } else {
             candidate.style.maxHeight = candidate.scrollHeight + 'px';
             candidate.classList.add('open');
             btn.setAttribute('aria-expanded','true');
-            btn.textContent = 'Hide abstract';
+            btn.querySelector('.label').textContent = 'Hide abstract';
           }
         });
         window.addEventListener('resize', () => {
