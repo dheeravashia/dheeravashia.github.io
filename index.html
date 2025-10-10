@@ -18,16 +18,15 @@
     :root {
       --bg: #0c0d0f;
       --surface: #121418;
-      --surface-2: #191c21;
+      --surface-2: #171a1f;
       --text: #e8eaed;
       --muted: #a3a9b7;
-      --accent: #66d9ff; /* subtle cyan */
+      --accent: #66d9ff; /* cyan */
       --accent-2: #7c6df6; /* indigo */
       --border: #23262c;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 14px;
+      --shadow: 0 6px 18px rgba(0,0,0,.28);
+      --radius: 12px;
 
-      --container-xs: 680px;
       --container-md: 1120px;
       --container-lg: 1280px;
 
@@ -36,7 +35,7 @@
       --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.6rem);
       --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.2rem);
       --step-3: clamp(2.1rem, 1.6rem + 2.4vw, 2.9rem);
-      --step-4: clamp(2.6rem, 2rem + 3vw, 3.6rem);
+      --step-4: clamp(2.6rem, 2rem + 3vw, 3.4rem);
     }
 
     [data-theme="light"] {
@@ -46,9 +45,9 @@
       --text: #111827;
       --muted: #4b5563;
       --accent: #0ea5e9;
-      --accent-2: #6366f1;
+      --accent-2: #4f46e5;
       --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+      --shadow: 0 6px 18px rgba(2, 6, 23, .08);
     }
 
     html, body { height: 100%; }
@@ -56,9 +55,7 @@
       margin: 0;
       font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(124,109,246,.12), transparent 55%),
-                  radial-gradient(900px 600px at -10% 10%, rgba(102,217,255,.10), transparent 45%),
-                  var(--bg);
+      background: var(--bg); /* MINIMAL: removed decorative gradients */
       line-height: 1.6;
       font-size: var(--step-0);
       -webkit-font-smoothing: antialiased;
@@ -69,37 +66,32 @@
     .container { width: min(92%, var(--container-md)); margin-inline: auto; }
     @media (min-width: 1440px) { .container { width: min(90%, var(--container-lg)); } }
 
-    /* ============= NAVBAR (glass + autohide) ============= */
+    /* ============= NAVBAR (glassless, minimal) ============= */
     .nav {
       position: sticky; top: 0; z-index: 50;
       display: flex; align-items: center; justify-content: space-between;
-      padding: .75rem 1rem; backdrop-filter: blur(12px);
-      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      padding: .75rem 1rem; background: var(--surface);
       border-bottom: 1px solid var(--border);
-      transition: transform .4s ease, background .3s ease, border-color .3s ease;
+      transition: transform .35s ease, background .25s ease, border-color .25s ease;
     }
     .nav.hide { transform: translateY(-100%); }
 
     .brand {
-      display: inline-grid; place-items: center;
-      min-width: clamp(44px, 8vw, 56px);
-      height: clamp(44px, 8vw, 56px);
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1020; text-decoration: none; font-weight: 800;
-      letter-spacing: .8px; box-shadow: var(--shadow);
-      font-size: clamp(.9rem, 2.8vw, 1.1rem); /* prevents text from feeling cramped */
+      display: inline-grid; place-items: center; min-width: 48px; height: 48px;
+      border-radius: 10px; background: var(--accent); color: #0b1020;
+      text-decoration: none; font-weight: 800; letter-spacing: .6px; box-shadow: none;
+      font-size: 1rem;
     }
 
     .nav-links { display: flex; gap: .75rem; align-items: center; }
     .nav-links a {
-      text-decoration: none; color: var(--text); padding: .5rem .7rem; border-radius: 10px;
+      text-decoration: none; color: var(--text); padding: .45rem .65rem; border-radius: 8px;
       border: 1px solid transparent; transition: background .2s ease, color .2s ease, border-color .2s ease;
     }
     .nav-links a:hover { background: var(--surface-2); border-color: var(--border); }
-    .nav-links a.active { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 30%, var(--border)); }
+    .nav-links a.active { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 28%, var(--border)); }
 
-    /* Dark-mode switch (rectangle, not pill) */
+    /* Dark-mode switch — simplified, no gradient */
     .switch { position: relative; width: 48px; height: 28px; display: inline-block; }
     .switch input { display: none; }
     .slider {
@@ -109,69 +101,58 @@
     }
     .slider:before {
       content: ""; position: absolute; height: 20px; width: 20px; left: 4px; top: 3px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-2)); border-radius: 6px;
-      transition: transform .25s ease;
+      background: var(--accent); border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.35);
+      transition: transform .25s ease, background .25s ease;
     }
-    #themeToggle:checked + .slider:before { transform: translateX(20px); }
+    #themeToggle:checked + .slider:before { transform: translateX(20px); background: var(--accent-2); }
 
     /* ================= HERO ================= */
-    .hero { padding: 5rem 0 3rem; }
+    .hero { padding: 4.5rem 0 3rem; }
     .hero-grid { display: grid; gap: 2rem; align-items: center; grid-template-columns: .9fr 1.1fr; }
     @media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } }
 
     .headline { font-size: var(--step-4); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 .75rem; }
-    .accent { background: linear-gradient(135deg, var(--accent), var(--accent-2));
-              -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .accent { color: var(--accent); } /* MINIMAL: remove gradient text */
     .lead { font-size: var(--step-0); color: var(--muted); max-width: 72ch; }
 
-    .cta-row { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+    .cta-row { display: flex; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
-      padding: .7rem 1rem; border-radius: 12px; font-weight: 600; letter-spacing: .2px;
-      background: var(--text); color: #0a0c10; border: 1px solid var(--border);
-      transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+      padding: .65rem .9rem; border-radius: 10px; font-weight: 600; letter-spacing: .2px;
+      background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
+      transition: transform .12s ease, background .2s ease;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
-    .btn:active { transform: translateY(0); }
+    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface-2) 85%, var(--accent) 15%); }
     .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { background: var(--surface-2); }
 
-    /* High-contrast LinkedIn brand button */
     .btn.linkedin, .btn[href*="github.com"] { background: #0077b5; color: #fff; border-color: #0077b5; }
-    [data-theme="light"] .btn.linkedin, [data-theme="light"] .btn[href*="github.com"] { background: #0077b5; color: #fff; border-color: #0077b5; }
 
     .hero-media { display: grid; place-items: center; }
     .hero-media img {
       width: clamp(220px, 28vw, 420px); aspect-ratio: 1/1; object-fit: cover;
-      border-radius: 20px; border: 1px solid var(--border);
-      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      border-radius: 16px; border: 1px solid var(--border); box-shadow: none; /* MINIMAL */
     }
 
-    /* ============= Sections & Titles (no ellipse) ============= */
-    .section { padding: 2.5rem 0; }
-    .section-title { margin: 2.5rem 0 1rem; }
+    /* ============= Sections & Titles (no gradients) ============= */
+    .section { padding: 2.2rem 0; }
+    .section-title { margin: 2.2rem 0 1rem; }
     .section-title span {
       display: inline-block; font-weight: 800; font-size: var(--step-2);
-      letter-spacing: .2px; padding-bottom: .35rem;
-      background-image: linear-gradient( to right, var(--accent), var(--accent-2));
-      background-repeat: no-repeat;
-      background-size: 100% 3px; /* underline */
-      background-position: 0 100%;
+      letter-spacing: .2px; padding-bottom: .4rem; border-bottom: 2px solid var(--accent);
     }
 
     /* ============= Cards ============= */
     .card {
-      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.1rem 1.1rem; margin: 1rem 0;
-      box-shadow: 0 1px 0 rgba(255,255,255,.02) inset, 0 0 0 rgba(0,0,0,0);
-      transition: box-shadow .25s ease, transform .15s ease, border-color .25s ease;
+      padding: 1rem 1.1rem; margin: 1rem 0;
+      transition: border-color .2s ease, transform .12s ease;
     }
-    .card:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); }
+    .card:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); }
     .card.compact { padding: .9rem 1rem; }
 
-    .card-header { margin-bottom: .4rem; }
+    .card-header { margin-bottom: .35rem; }
     .h3 { font-size: var(--step-1); margin: 0 0 .2rem; }
     .h4 { font-size: 1.05rem; margin: .6rem 0 .4rem; }
     .meta { color: var(--muted); font-size: var(--step--1); margin: 0; }
@@ -186,11 +167,7 @@
     }
     .chip:hover { border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); transform: translateY(-1px); }
 
-    /* ============= Skills / Tables ============= */
-    .skills-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(3, 1fr); }
-    @media (max-width: 900px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 620px) { .skills-grid { grid-template-columns: 1fr; } }
-
+    /* ============= Tables / lists ============= */
     .table { display: grid; gap: 1rem; }
     .two-col { grid-template-columns: 1fr 1fr; }
     .three-col { grid-template-columns: repeat(3, 1fr); }
@@ -204,36 +181,67 @@
     .separator { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 2rem 0; }
 
     /* Footer */
-    .footer { margin-top: 3rem; border-top: 1px solid var(--border); background: color-mix(in oklab, var(--surface) 85%, transparent); }
+    .footer { margin-top: 3rem; border-top: 1px solid var(--border); background: var(--surface); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; }
     .back-to-top { text-decoration: none; color: var(--muted); border: 1px solid var(--border); padding: .45rem .7rem; border-radius: 8px; }
     .back-to-top:hover { color: var(--text); background: var(--surface-2); }
 
     /* Reveal (respects reduced motion) */
-    .reveal { opacity: 0; transform: translateY(10px); }
-    .reveal.in { opacity: 1; transform: none; transition: opacity .45s ease, transform .45s ease; }
+    .reveal { opacity: 0; transform: translateY(8px); }
+    .reveal.in { opacity: 1; transform: none; transition: opacity .35s ease, transform .35s ease; }
 
     /* Focus states */
     :focus-visible { outline: 2px solid color-mix(in oklab, var(--accent) 65%, transparent); outline-offset: 2px; border-radius: 8px; }
 
-    /* Print-friendly (for CV sharing) */
+    /* Print-friendly */
     @media print {
       body { background: #fff; color: #000; }
       .nav, .btn, .switch, .back-to-top { display: none !important; }
       .card { box-shadow: none; border-color: #ddd; }
     }
-      /* ===== Abstract dropdown (research only) ===== */
-    #research .abstract { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    #research .abstract.open { /* max-height set inline via JS for smooth animation */ }
-    #research .abstract-toggle {
-      display: inline-flex; align-items: center; gap: .4rem; cursor: pointer;
-      padding: .4rem .65rem; border-radius: 10px; border: 1px solid var(--border);
-      background: transparent; color: var(--text); font-weight: 600;
-      transition: background .2s ease, border-color .2s ease, transform .12s ease;
+
+    /* ==== Dark mode contrast boost for skills & project cards ==== */
+    :root:not([data-theme="light"]) .card { background: #151922; border-color: #2b3340; }
+    :root:not([data-theme="light"]) .h3,
+    :root:not([data-theme="light"]) .h4 { color: #eef1f6; }
+    :root:not([data-theme="light"]) .meta { color: #b7bfce; }
+    :root:not([data-theme="light"]) .chip,
+    :root:not([data-theme="light"]) .link-badge { background: #1f2530; border-color: #2e3746; color: #e8edf7; }
+    :root:not([data-theme="light"]) .chip:hover { border-color: color-mix(in oklab, var(--accent) 35%, #2e3746); background: #232b38; }
+    :root:not([data-theme="light"]) .table .h4 { color: #f1f4fa; }
+    :root:not([data-theme="light"]) ul.tight li { color: #e6ebf5; }
+    :root:not([data-theme="light"]) .section-title span { border-bottom-width: 3px; }
+  
+
+    /* ===== Size tweaks for Slides/Paper chips ===== */
+    .links { gap: .4rem; }
+    .chip, .link-badge {
+      padding: .35rem .55rem;           /* smaller */
+      font-size: var(--step--1);        /* slightly smaller text */
+      border-radius: 8px;               /* a touch tighter */
     }
-    #research .abstract-toggle:hover { background: var(--surface-2); border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); }
-    #research .abstract-toggle .chev { display:inline-block; transition: transform .2s ease; }
-    #research .abstract-toggle[aria-expanded="true"] .chev { transform: rotate(90deg); }
+
+    /* ===== Responsive refinements (desktop → phone) ===== */
+    @media (max-width: 1200px) {
+      .container { width: min(94%, var(--container-md)); }
+    }
+    @media (max-width: 900px) {
+      .hero { padding: 3.5rem 0 2rem; }
+      .section { padding: 1.6rem 0; }
+      .card { padding: .85rem 1rem; }
+      .nav { padding: .6rem .8rem; }
+      .nav-links { flex-wrap: wrap; row-gap: .35rem; }
+      .three-col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 880px) {
+      .two-col, .three-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .brand { min-width: 42px; height: 42px; border-radius: 8px; }
+      .btn { padding: .55rem .8rem; border-radius: 8px; }
+      .links { gap: .35rem; }
+      .hero-media img { width: min(68vw, 320px); }
+    }
 
   </style>
 </head>
@@ -257,43 +265,33 @@
   <section id="top" class="hero container">
     <div class="hero-grid">
       <div class="hero-media reveal">
-        <img src="Images/IMG_8641_OG - Copy- SQAURE.JPEG" alt="Portrait of Dheer Avashia"
-             loading="eager" decoding="async" fetchpriority="high" />
+        <img src="Images/IMG_8641_OG - Copy- SQAURE.JPEG" alt="Portrait of Dheer Avashia" loading="eager" decoding="async" fetchpriority="high" />
       </div>
       <div class="hero-text reveal">
         <h1 class="headline">Hello, I'm <span class="accent">Dheer Avashia</span></h1>
         <p class="lead">
-          I am currently a PhD student in Economics at the University of Arizona, applying <strong>Behavioral-Industrial Organizational</strong> perspectives and methods to study how <strong>AI shapes consumer behavior and markets</strong>. 
+          I am currently a PhD student in Economics at the University of Arizona, applying <strong>Behavioral-Industrial Organizational</strong> perspectives and methods to study how <strong>AI shapes consumer behavior and markets</strong>.
         </p>
         <div class="cta-row">
           <a class="btn linkedin" href="https://www.linkedin.com/in/dheeravashia" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/dheeravashia" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://eller.arizona.edu/person/dheer-avashia">Contact</a>
-          
+          <a class="btn btn-ghost" href="https://eller.arizona.edu/person/dheer-avashia" target="_blank" rel="noopener">Contact</a>
         </div>
       </div>
     </div>
   </section>
 
-  <span id="about" class="anchor-spacer" aria-hidden="true"></span>
-
   <!-- ===== RESEARCH ===== -->
   <section id="research" class="section container">
     <h2 class="section-title"><span>Research</span></h2>
-        <article class="card reveal">
+
+    <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">The Impact of AI-generated Review Summaries: Evidence From Indian E-Commerce</h3>
-        <p class="meta">Economics Department, University Of Arizona, Tucson AZ </p>
+        <p class="meta">Economics Department, University Of Arizona, Tucson AZ</p>
       </header>
       <p>
-  The rise of AI-generated overviews is transforming how consumers interact with
- information in digital markets. These overviews, powered by the development of large
- language models (LLMs), condense vast volumes of information into accessible narratives, potentially mitigating the effects of information overload and providing better
- insights into product characteristics. In this research, I focus on AI overviews of product reviews on e-commerce platforms and investigate whether they influence consumer
- purchasing decisions by affecting product-level sales and pricing. Leveraging variation in the adoption of these overviews across the two largest e-commerce platforms in
- India- Amazon and Flipkart- I apply a difference-in-differences framework, with three-way fixed effects, to isolate the effect of AI summaries. I aim to provide new, and
- among one of the first, to my knowledge, evidence on the role of algorithmic information processing and presentation of consumer reviews in shaping consumer behavior,
- market outcomes, and platform competition in digital markets.
+        The rise of AI-generated overviews is transforming how consumers interact with information in digital markets. These overviews, powered by the development of large language models (LLMs), condense vast volumes of information into accessible narratives, potentially mitigating the effects of information overload and providing better insights into product characteristics. In this research, I focus on AI overviews of product reviews on e-commerce platforms and investigate whether they influence consumer purchasing decisions by affecting product-level sales and pricing. Leveraging variation in the adoption of these overviews across the two largest e-commerce platforms in India — Amazon and Flipkart — I apply a difference-in-differences framework, with three-way fixed effects, to isolate the effect of AI summaries. I aim to provide new, and among one of the first, to my knowledge, evidence on the role of algorithmic information processing and presentation of consumer reviews in shaping consumer behavior, market outcomes, and platform competition in digital markets.
       </p>
       <p class="links">
         <a class="chip" href="https://www.dheeravashia.com/assets/Avashia_AI_overviews_Second_year_presentation.pdf" target="_blank" rel="noopener">Slides</a>
@@ -303,11 +301,10 @@
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Economics Thesis (Hons.)</h3>
-        <p class="meta">Economics Department, University Of The South, Sewanee TN ​| Economics Department, University Of Arizona, Tucson AZ | August 2022 - August 2023</p>
+        <p class="meta">Economics Department, University Of The South, Sewanee TN | Economics Department, University Of Arizona, Tucson AZ | Aug 2022 – Aug 2023</p>
       </header>
       <p>
-       Empirical evidence for the availability heuristic causing an erroneous meta-cognitive judgment of one's objective financial knowledge.
-The reasons for disparities in financial knowledge are often explored through the lens of policy action and education. However, in this research, we study the role of cognitive bias in financial knowledge to explain disparities in perceived and Actual Financial Knowledge. We propose a model of overconfidence and then attempt to estimate how variance in levels of overconfidence can be explained specifically through the lens of exposures to financial shocks. Our analysis finds gender and educational differences in levels of financial overconfidence and finds empirical evidence that higher exposure to negative financial shocks predicts lower levels of overconfidence. 
+        Empirical evidence for the availability heuristic causing an erroneous meta-cognitive judgment of one's objective financial knowledge. The reasons for disparities in financial knowledge are often explored through the lens of policy action and education. However, in this research, we study the role of cognitive bias in financial knowledge to explain disparities in perceived and actual financial knowledge. We propose a model of overconfidence and then attempt to estimate how variance in levels of overconfidence can be explained specifically through the lens of exposures to financial shocks. Our analysis finds gender and educational differences in levels of financial overconfidence and finds empirical evidence that higher exposure to negative financial shocks predicts lower levels of overconfidence.
       </p>
       <p class="links">
         <a class="chip" href="https://www.dheeravashia.com/assets/Overconfidence%20and%20Shocks.pdf" target="_blank" rel="noopener">Slides</a>
@@ -317,11 +314,10 @@ The reasons for disparities in financial knowledge are often explored through th
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">The Theory of Huffman Encoding</h3>
-        <p class="meta">Mathematics Department | Sewanee, TN | August 2022 - May 2023</p>
+        <p class="meta">Mathematics Department | Sewanee, TN | Aug 2022 – May 2023</p>
       </header>
       <ul class="tight">
         In this project, I surveyed research in Algorithmic Information Theory. I understood the functions and mechanisms of Turing Machines, fundamental information theory concepts: Probability, Entropy, and Complexity. I then, specifically, focused on Huffman's Encoding Problem, analyzed proofs of optimal lossless encoding, theories of fundamental binary data encoding, and studied Huffman trees.
-      
       </ul>
       <p class="links">
         <a class="chip" href="https://www.dheeravashia.com/assets/Huffman%20Encoding%20Problem.pdf" target="_blank" rel="noopener">Slides</a>
@@ -331,10 +327,10 @@ The reasons for disparities in financial knowledge are often explored through th
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Economics Researcher</h3>
-        <p class="meta">Sewanee Undergraduate Research, Sewanee TN. | May 2021 - August 2021</p>
+        <p class="meta">Sewanee Undergraduate Research, Sewanee TN | May 2021 – Aug 2021</p>
       </header>
       <ul class="tight">
-        Surveyed experimental economics literature on price bubbles and crashes in spot asset markets. 
+        Surveyed experimental economics literature on price bubbles and crashes in spot asset markets.
       </ul>
       <p class="links">
         <a class="chip" href="https://www.dheeravashia.com/assets/Information%2C%20Speculation%20And%20Bubble%20Formation%20In%20Experimental%20Crypto-Currency%20Markets.pdf" target="_blank" rel="noopener">Paper</a>
@@ -344,19 +340,10 @@ The reasons for disparities in financial knowledge are often explored through th
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Psychology Research Fellow</h3>
-        <p class="meta">Psychology Department, University Of The South, Sewanee, TN | January 2021 - May 2021</p>
+        <p class="meta">Psychology Department, University Of The South, Sewanee, TN | Jan 2021 – May 2021</p>
       </header>
       <ul class="tight">
-      Eating disorders are becoming highly prevalent in college students, as several studies
-have reported a greater presence of eating disorders on college campuses as compared to the
-general population (Fitzsimmons-Craft et al., 2019). Image expectations might help better understand the reasons for the onset of ON in college
-students. One such factor is Imaginary Audience. Imaginary Audience is a state in which individuals believe they are actively being judged
-by peers (Elkind & Bowen, 1979); it is one of the most frequent ideation states faced by adolescents (O'Connor, 1995).  In this study, social media use is expected to predict levels of ON in college
-students, with Imaginary Audience as a potential mediating variable. Current literature search reveals sparse research on the connection between these two variables. This study uses an online survey to gather data about three constructs: the presence of an imaginary audience, social media
-use, and the prevalence of ON. The study predicts that a higher influence of social media and the
-prevalence of an imaginary audience will be positively associated with higher levels of ON in college
-students.
-
+        Eating disorders are becoming highly prevalent in college students, as several studies have reported a greater presence of eating disorders on college campuses as compared to the general population (Fitzsimmons-Craft et al., 2019). Image expectations might help better understand the reasons for the onset of ON in college students. One such factor is Imaginary Audience. Imaginary Audience is a state in which individuals believe they are actively being judged by peers (Elkind & Bowen, 1979); it is one of the most frequent ideation states faced by adolescents (O'Connor, 1995). In this study, social media use is expected to predict levels of ON in college students, with Imaginary Audience as a potential mediating variable. Current literature search reveals sparse research on the connection between these two variables. This study uses an online survey to gather data about three constructs: the presence of an imaginary audience, social media use, and the prevalence of ON. The study predicts that a higher influence of social media and the prevalence of an imaginary audience will be positively associated with higher levels of ON in college students.
       </ul>
       <p class="links">
         <a class="chip" href="https://www.dheeravashia.com/assets/Dheer%20Avashia%20Orthorexia%20Nervosa.docx.pdf" target="_blank" rel="noopener">Paper</a>
@@ -367,74 +354,74 @@ students.
   <!-- ===== EXPERIENCE ===== -->
   <section id="experience" class="section container">
     <h2 class="section-title"><span>Work Experience</span></h2>
-     
+
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Teaching Assistant</h3>
         <p class="meta">University of Arizona, Tucson, Arizona</p>
       </header>
       <ul class="tight">
-        <li>Economics 200: Introductory Economics (Fall 2023) </li>
-<li>Economics 330: Macroeconomics and Global Institutions Policy- TA (Spring 2024)</li>
-<li>Economics 337: Economics of Politics and Policymaking (Spring 2024)</li>
-<li>Economics 407: Economics of Strategy (Fall 2024)</li>
-<li>Economics 443: International Trade (Fall 2024)</li>
-<li>PSY 230: Psychological Measurement and Statistics (Spring 2025)</li>
-<li>Economics 443: International Trade (Fall 2025)</li>
-<li>Economics 330: Macroeconomics and Global Institutions Policy (Fall 2025)</li>
-<li>Economics 550 Economics for Managers- MBA (Fall 2025) </li>
+        <li>Economics 200: Introductory Economics (Fall 2023)</li>
+        <li>Economics 330: Macroeconomics and Global Institutions Policy — TA (Spring 2024)</li>
+        <li>Economics 337: Economics of Politics and Policymaking (Spring 2024)</li>
+        <li>Economics 407: Economics of Strategy (Fall 2024)</li>
+        <li>Economics 443: International Trade (Fall 2024)</li>
+        <li>PSY 230: Psychological Measurement and Statistics (Spring 2025)</li>
+        <li>Economics 443: International Trade (Fall 2025)</li>
+        <li>Economics 330: Macroeconomics and Global Institutions Policy (Fall 2025)</li>
+        <li>Economics 550 Economics for Managers — MBA (Fall 2025)</li>
       </ul>
     </article>
 
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">User Experience & Marketing</h3>
-        <p class="meta">Sayaji Seeds, Ahmedabad, India | April 2020 - August 2020</p>
+        <p class="meta">Sayaji Seeds, Ahmedabad, India | Apr 2020 – Aug 2020</p>
       </header>
       <ul class="tight">
         <li>Researched business models and digital strategies of firms catering to the Indian rural market.</li>
-        <li>Conceptualized and implemented, alongside the CEO, the marketing strategy for promoting the company's new mobile application, reaching over 2000 potential clients</li>
-        <li>Created KPI metrics, alongside CEO and UX designers, for a pilot study helping measure user accessibility and retention for the company's new mobile application, which now has over 5000 users</li>
-        <li>Researched and presented a comprehensive report on rural marketing. Worked with digital marketing head to run ad campaigns (Google ads, IVR, on-ground marketing) increasing users by 20%</li>
+        <li>Conceptualized and implemented, alongside the CEO, the marketing strategy for promoting the company's new mobile application, reaching over 2000 potential clients.</li>
+        <li>Created KPI metrics, alongside CEO and UX designers, for a pilot study helping measure user accessibility and retention for the company's new mobile application, which now has over 5000 users.</li>
+        <li>Researched and presented a comprehensive report on rural marketing. Worked with digital marketing head to run ad campaigns (Google Ads, IVR, on-ground marketing) increasing users by 20%.</li>
       </ul>
     </article>
 
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Business Strategy & Content Production</h3>
-        <p class="meta">Connect2Teach, Ahmedabad, India | March 2019 - August 2019</p>
+        <p class="meta">Connect2Teach, Ahmedabad, India | Mar 2019 – Aug 2019</p>
       </header>
       <ul class="tight">
-        <li>Analyzed business-to-business models and growth strategy of 10 major companies in the online learning industry. Generated user profiles and identified key trends in the executive learning industry and presented insights to CEO</li>
-        <li>Built several user profiles and led presentations on ideas for optimizing the company's product</li>
-        <li>Authored, edited, and published over 5 articles for on and off-page blogging</li>
-        <li>Ran ads and performed SEO optimizing, alongside the Digital marketing team, boosting social media followers by 30%</li>
+        <li>Analyzed business-to-business models and growth strategy of 10 major companies in the online learning industry. Generated user profiles and identified key trends in the executive learning industry and presented insights to CEO.</li>
+        <li>Built several user profiles and led presentations on ideas for optimizing the company's product.</li>
+        <li>Authored, edited, and published over 5 articles for on and off-page blogging.</li>
+        <li>Ran ads and performed SEO optimizing, alongside the Digital marketing team, boosting social media followers by 30%.</li>
       </ul>
     </article>
 
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">VP Recruitment & Greek Life Assistant</h3>
-        <p class="meta"><a href="https://issuu.com/sewaneegreeklife/docs/greek_life_annual_report_final" target="_blank" rel="noopener">University Of The South Greek Life Office</a>, Sewanee TN | August 2021 - May 2023</p>
+        <p class="meta"><a href="https://issuu.com/sewaneegreeklife/docs/greek_life_annual_report_final" target="_blank" rel="noopener">University Of The South Greek Life Office</a>, Sewanee TN | Aug 2021 – May 2023</p>
       </header>
       <ul class="tight">
-        <li>Assisted the director of Greek Life in everyday tasks</li>
-        <li>Created forms and surveys to gather data about Greek life organizations on campus, used Excel to format and present data to the head of Greek life</li>
-        <li>Planned a <a href="https://new.sewanee.edu/hazing/" target="_blank" rel="noopener">hazing prevention</a> marketing campaign to create awareness about hazing and provide resources</li>
-        <li>Making the Greek Life culture on campus safer and more welcoming</li>
+        <li>Assisted the director of Greek Life in everyday tasks.</li>
+        <li>Created forms and surveys to gather data about Greek life organizations on campus; used Excel to format and present data to the head of Greek Life.</li>
+        <li>Planned a <a href="https://new.sewanee.edu/hazing/" target="_blank" rel="noopener">hazing prevention</a> marketing campaign to create awareness about hazing and provide resources.</li>
+        <li>Made the Greek Life culture on campus safer and more welcoming.</li>
       </ul>
     </article>
 
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Residential Assistant</h3>
-        <p class="meta">University of The South Residential Life office, Sewanee TN | January 2021 - May 2023</p>
+        <p class="meta">University of The South Residential Life Office, Sewanee TN | Jan 2021 – May 2023</p>
       </header>
       <ul class="tight">
-        <li>Designed and implemented over 15 programs to foster relationships and make residents feel safe and comfortable in residential spaces</li>
-        <li>Applied QPR training and restorative techniques to help extinguish sensitive situations and resolve conflicts</li>
-        <li>Acted as a student leader and role model for over 200 residents cultivating living spaces with a strong sense of community</li>
-        <li>One of the most esteemed leadership positions on campus</li>
+        <li>Designed and implemented over 15 programs to foster relationships and make residents feel safe and comfortable in residential spaces.</li>
+        <li>Applied QPR training and restorative techniques to help extinguish sensitive situations and resolve conflicts.</li>
+        <li>Acted as a student leader and role model for over 200 residents, cultivating living spaces with a strong sense of community.</li>
+        <li>One of the most esteemed leadership positions on campus.</li>
         <li>Supervised residence halls with 150+ students, responded to emergencies, and reported to area manager.</li>
       </ul>
     </article>
@@ -442,37 +429,37 @@ students.
     <article class="card reveal">
       <header class="card-header">
         <h3 class="h3">Marketing Intern</h3>
-        <p class="meta">University of the South Wellness Center, Sewanee, TN | September 2019 - August 2021</p>
+        <p class="meta">University of the South Wellness Center, Sewanee, TN | Sep 2019 – Aug 2021</p>
       </header>
       <ul class="tight">
-        <li>Researched student taboos surrounding mental health, evaluated data to devise a social media marketing plan and content calendar, increased student interaction and awareness by over 30%</li>
-        <li>Collaborated with the director of the Wellness Center and student leaders on campus to plan and implement 11 events promoting mental health awareness</li>
+        <li>Researched student taboos surrounding mental health, evaluated data to devise a social media marketing plan and content calendar; increased student interaction and awareness by over 30%.</li>
+        <li>Collaborated with the director of the Wellness Center and student leaders on campus to plan and implement 11 events promoting mental health awareness.</li>
       </ul>
     </article>
   </section>
 
-    <div class="separator reveal" aria-hidden="true"></div>
-
+  <!-- ===== COURSEWORK (wrapped + aligned) ===== -->
+  <section id="coursework" class="section container">
     <h2 class="section-title"><span>Graduate Coursework</span></h2>
     <div class="card reveal compact">
       <div class="table two-col">
         <div class="table-col">
-          <h4 class="h4">Quantitative/Applied</h4>
+          <h4 class="h4">Quantitative / Applied</h4>
           <ul class="tight">
             <li><strong>Applied Economic Analysis</strong></li>
             <li><strong>Experimental Economics</strong></li>
             <li><strong>Industrial-Organizational Economics</strong></li>
             <li><strong>Labor Economics</strong></li>
-            <li><strong>Computational Methods-Dynamic Models</strong></li>
+            <li><strong>Computational Methods — Dynamic Models</strong></li>
             <li><strong>Applied NLP</strong></li>
           </ul>
         </div>
         <div class="table-col">
           <h4 class="h4">Theory</h4>
           <ul class="tight">
-            <li><strong>Econometrics</strong> </li>
-            <li><strong>High Dimensional Econometrics</strong>
-            <li><strong>Advanced Game-Theory</strong> </li>
+            <li><strong>Econometrics</strong></li>
+            <li><strong>High Dimensional Econometrics</strong></li>
+            <li><strong>Advanced Game Theory</strong></li>
             <li><strong>Microeconomic Theory</strong></li>
             <li><strong>Mechanism Design</strong></li>
             <li><strong>Behavioral Economics</strong></li>
@@ -495,7 +482,7 @@ students.
             <li>Abstract Algebra 1</li>
             <li>Abstract Algebra 2</li>
             <li>Real Analysis</li>
-            <li>Probability Statistics</li>
+            <li>Probability & Statistics</li>
             <li>Time Series</li>
           </ul>
         </div>
@@ -565,7 +552,7 @@ students.
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     }
 
-    // ================= Active link highlighting =================
+    // ================= Active link highlighting (now includes #coursework) =================
     const sections = ['research','experience','coursework'];
     const links = [...document.querySelectorAll('.nav-links a')];
     const setActive = () => {
@@ -579,52 +566,43 @@ students.
     addEventListener('scroll', setActive, { passive: true });
     addEventListener('load', setActive);
 
-    // ===== Add collapsible abstracts to Research cards (no style changes elsewhere) =====
+    // ===== Collapsible abstracts on Research cards =====
     (function(){
       const cards = document.querySelectorAll('#research .card');
       cards.forEach(card => {
         const header = card.querySelector('.card-header');
         if (!header) return;
-        // Find the first paragraph or list immediately following the header
         let candidate = header.nextElementSibling;
         while (candidate && !(candidate.tagName === 'P' || candidate.tagName === 'UL')) {
-          // Stop if we reach links row or another header/article
           if (candidate.classList?.contains('links') || candidate.tagName === 'HEADER' || candidate.tagName === 'ARTICLE') return;
           candidate = candidate.nextElementSibling;
         }
         if (!candidate) return;
-        // Heuristic: only collapse if it's not the simple links row and has some content
         const textLen = candidate.textContent.trim().length;
-        if (textLen < 80) return; // skip very short blurbs
-
-        // Mark as abstract and collapse
+        if (textLen < 80) return;
         candidate.classList.add('abstract');
         candidate.style.maxHeight = '0px';
-
-        // Insert toggle button before it
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'abstract-toggle';
         btn.setAttribute('aria-expanded','false');
-        btn.innerHTML = '<span class="chev">▶</span><span class="label">Read abstract</span>';
+        btn.textContent = 'Read abstract';
+        btn.style.cssText = 'display:inline-flex;align-items:center;gap:.4rem;cursor:pointer;padding:.4rem .65rem;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);font-weight:600';
         candidate.parentNode.insertBefore(btn, candidate);
-
-        // Toggle behavior
         btn.addEventListener('click', () => {
           const expanded = btn.getAttribute('aria-expanded') === 'true';
           if (expanded) {
             candidate.style.maxHeight = '0px';
             candidate.classList.remove('open');
             btn.setAttribute('aria-expanded','false');
-            btn.querySelector('.label').textContent = 'Read abstract';
+            btn.textContent = 'Read abstract';
           } else {
             candidate.style.maxHeight = candidate.scrollHeight + 'px';
             candidate.classList.add('open');
             btn.setAttribute('aria-expanded','true');
-            btn.querySelector('.label').textContent = 'Hide abstract';
+            btn.textContent = 'Hide abstract';
           }
         });
-        // Recompute height on window resize if open
         window.addEventListener('resize', () => {
           if (btn.getAttribute('aria-expanded') === 'true') {
             candidate.style.maxHeight = candidate.scrollHeight + 'px';
@@ -632,20 +610,6 @@ students.
         });
       });
     })();
-
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
