@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dheer Avashia — Portfolio</title>
@@ -17,147 +16,51 @@
        Design System (CSS Vars)
        ======================= */
     :root {
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Lora', serif;
+      --bg: #0c0d0f;
+      --surface: #121418;
+      --surface-2: #171a1f;
+      --text: #e8eaed;
+      --muted: #a3a9b7;
+      --accent: #66d9ff; /* cyan */
+      --accent-2: #7c6df6; /* indigo */
+      --border: #23262c;
+      --shadow: 0 6px 18px rgba(0,0,0,.28);
+      --radius: 12px;
 
-  --color-text: #141413;
-  --color-bg: #faf9f5;
-  --color-accent: #3d3d3a; /* subtle coffee-toned accent */
-  --color-muted: #b0aea5;
+      --container-md: 1120px;
+      --container-lg: 1280px;
 
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
+      --step--1: clamp(.78rem, .75rem + .2vw, .9rem);
+      --step-0: clamp(.95rem, .9rem + .3vw, 1.05rem);
+      --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.6rem);
+      --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.2rem);
+      --step-3: clamp(2.1rem, 1.6rem + 2.4vw, 2.9rem);
+      --step-4: clamp(2.6rem, 2rem + 3vw, 3.4rem);
+    }
 
-  --max-width: 750px;
-}
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f3f5f9;
+      --text: #111827;
+      --muted: #4b5563;
+      --accent: #0ea5e9;
+      --accent-2: #4f46e5;
+      --border: #e5e7eb;
+      --shadow: 0 6px 18px rgba(2, 6, 23, .08);
+    }
 
-/* Base styles */
-body {
-  font-family: var(--font-body);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
-  padding: var(--spacing-md);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Headings */
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-heading);
-  color: var(--color-text);
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-sm);
-  letter-spacing: -0.01em;
-}
-
-h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 600;
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 500;
-}
-
-/* Paragraphs and text */
-p {
-  margin-bottom: var(--spacing-md);
-  font-weight: 400;
-  color: var(--color-text);
-}
-
-/* Links */
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-muted);
-  transition: all 0.2s ease;
-}
-
-a:hover {
-  color: var(--color-text);
-  border-color: var(--color-text);
-}
-
-/* Layout containers */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-/* Buttons (optional) */
-button, .btn {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  color: #fff;
-  background-color: var(--color-accent);
-  border: none;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-}
-
-button:hover, .btn:hover {
-  background-color: var(--color-text);
-}
-
-/* Small text or captions */
-small, .caption {
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-}
-
-    @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #141413;         /* dark charcoal background */
-    --color-text: #faf9f5;       /* light text */
-    --color-accent: #d6cfc0;     /* muted cream accent */
-    --color-muted: #7f7d76;      /* for secondary text */
-  }
-
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
-
-  a {
-    color: var(--color-accent);
-    border-bottom: 1px solid var(--color-muted);
-  }
-
-  a:hover {
-    color: var(--color-text);
-    border-color: var(--color-text);
-  }
-
-  button, .btn {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-  }
-
-  button:hover, .btn:hover {
-    background-color: var(--color-text);
-    color: var(--color-bg);
-  }
-
-  small, .caption {
-    color: var(--color-muted);
-  }
-}
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg); /* MINIMAL: removed decorative gradients */
+      line-height: 1.6;
+      font-size: var(--step-0);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
     /* Containers */
     .container { width: min(92%, var(--container-md)); margin-inline: auto; }
@@ -733,7 +636,5 @@ small, .caption {
   </script>
 </body>
 </html>
-
-
 
 
