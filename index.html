@@ -1,674 +1,1323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="icon" type="image/png" href="/assets/logo.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dheer Avashia — Portfolio</title>
-  <meta name="description" content="Portfolio of Dheer Avashia — Economics PhD student. Research, experience, coursework, and contact." />
+  <meta name="description"
+    content="Portfolio of Dheer Avashia — Economics PhD student. Research, experience, coursework, and contact." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
 
   <style>
-    /* =======================
-       Design System (CSS Vars)
-       ======================= */
     :root {
-      --bg: #0c0d0f;
-      --surface: #121418;
-      --surface-2: #171a1f;
-      --text: #e8eaed;
-      --muted: #a3a9b7;
-      --accent: #66d9ff; /* cyan */
-      --accent-2: #7c6df6; /* indigo */
-      --border: #23262c;
-      --shadow: 0 6px 18px rgba(0,0,0,.28);
-      --radius: 12px;
-
-      --container-md: 1120px;
-      --container-lg: 1280px;
-
-      --step--1: clamp(.78rem, .75rem + .2vw, .9rem);
-      --step-0: clamp(.95rem, .9rem + .3vw, 1.05rem);
-      --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.6rem);
-      --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.2rem);
-      --step-3: clamp(2.1rem, 1.6rem + 2.4vw, 2.9rem);
-      --step-4: clamp(2.6rem, 2rem + 3vw, 3.4rem);
-    }
-
-    [data-theme="light"] {
-      --bg: #f8fafc;
+      --bg: #f5f7fa;
       --surface: #ffffff;
-      --surface-2: #f3f5f9;
-      --text: #111827;
-      --muted: #4b5563;
-      --accent: #0ea5e9;
-      --accent-2: #4f46e5;
-      --border: #e5e7eb;
-      --shadow: 0 6px 18px rgba(2, 6, 23, .08);
+      --surface-strong: #ffffff;
+      --surface-muted: #eef2f6;
+      --text: #16202b;
+      --muted: #5f6b78;
+      --accent: #1f4b7a;
+      --accent-soft: #d9e5f2;
+      --accent-ink: #173a5d;
+      --line: #d9e1e8;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --container: 1160px;
     }
 
-    html, body { height: 100%; }
+    [data-theme="dark"] {
+      --bg: #0f1720;
+      --surface: #131d27;
+      --surface-strong: #16212d;
+      --surface-muted: #1c2936;
+      --text: #edf3f8;
+      --muted: #b4c0cc;
+      --accent: #8fb3d9;
+      --accent-soft: #203349;
+      --accent-ink: #d5e6f7;
+      --line: #263646;
+      --shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-height: 100%;
+      font-family: "Manrope", system-ui, sans-serif;
       color: var(--text);
-      background: var(--bg); /* MINIMAL: removed decorative gradients */
+      background: var(--bg);
       line-height: 1.6;
-      font-size: var(--step-0);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Containers */
-    .container { width: min(92%, var(--container-md)); margin-inline: auto; }
-    @media (min-width: 1440px) { .container { width: min(90%, var(--container-lg)); } }
-
-    /* ============= NAVBAR (glassless, minimal) ============= */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .75rem 1rem; background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      transition: transform .35s ease, background .25s ease, border-color .25s ease;
+    img {
+      max-width: 100%;
+      display: block;
     }
-    .nav.hide { transform: translateY(-100%); }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 94%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
 
     .brand {
-      display: inline-grid; place-items: center; min-width: 48px; height: 48px;
-      border-radius: 10px; background: var(--accent); color: #0b1020;
-      text-decoration: none; font-weight: 800; letter-spacing: .6px; box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #fff7f1;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 0.98rem;
+      font-weight: 800;
+    }
+
+    .brand-text span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      min-width: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 0.55rem 0.8rem;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: var(--surface-strong);
+      color: var(--text);
+      transform: none;
+    }
+
+    .switch {
+      position: relative;
+      width: 54px;
+      height: 32px;
+      display: inline-block;
+      flex: 0 0 auto;
+      touch-action: manipulation;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 4px;
+      top: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.22s ease;
+    }
+
+    #themeToggle:checked+.slider::before {
+      transform: translateX(22px);
+    }
+
+    .hero {
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+      gap: 1.75rem;
+      align-items: center;
+      padding: clamp(1.2rem, 2vw, 1.75rem);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 350px);
+      aspect-ratio: 1 / 1.06;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--surface-muted);
+      border: 1px solid var(--line);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent-ink);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 1rem 0 0.85rem;
+      font-size: clamp(2.3rem, 4vw, 3.8rem);
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero .lead {
+      margin: 0 0 0.95rem;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 0.99rem;
+    }
+
+    .cta-row,
+    .quick-links,
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cta-row {
+      margin-top: 1.1rem;
+    }
+
+    .btn,
+    .pill,
+    .section-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 0.74rem 0.95rem;
+      border: 1px solid var(--line);
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      font-weight: 700;
+    }
+
+    .btn {
+      background: var(--surface-strong);
+      color: var(--text);
+    }
+
+    .btn:hover,
+    .pill:hover,
+    .section-nav a:hover {
+      transform: none;
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+    }
+
+    .btn.linkedin {
+      background: #0a66c2;
+      color: #ffffff;
+      border-color: #0a66c2;
+    }
+
+    .btn[href*="github.com"] {
+      background: #1d2732;
+      color: #ffffff;
+      border-color: #1d2732;
+    }
+
+    [data-theme="dark"] .btn[href*="github.com"] {
+      background: #233241;
+      color: #edf3f8;
+      border-color: #233241;
+    }
+
+    .btn-ghost {
+      background: transparent;
+    }
+
+    .quick-links {
+      margin-top: 1rem;
+    }
+
+    .pill {
+      padding: 0.62rem 0.9rem;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-bottom: 4rem;
+    }
+
+    .content-panel {
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .content-column {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .content-panel {
+      padding: 1.15rem;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    details.item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-strong);
+      overflow: hidden;
+    }
+
+    details.item[open] {
+      border-color: color-mix(in srgb, var(--accent) 34%, var(--line));
+    }
+
+    .item-summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding: 0.95rem 1rem;
+    }
+
+    .item-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .item-heading {
+      min-width: 0;
+    }
+
+    .item-heading h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .meta {
+      margin: 0.3rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .summary-toggle {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 800;
+      white-space: nowrap;
+      padding-top: 0.15rem;
+    }
+
+    details[open] .summary-toggle {
+      color: var(--accent);
+    }
+
+    .item-body {
+      padding: 0 1rem 1rem;
+      color: var(--muted);
+    }
+
+    .item-body p,
+    .item-body ul {
+      margin: 0;
+    }
+
+    .item-body+.item-body {
+      margin-top: 0.85rem;
+    }
+
+    ul.tight {
+      padding-left: 1.2rem;
+    }
+
+    .links {
+      margin-top: 0.85rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text);
+      background: var(--surface-muted);
+      border: 1px solid var(--line);
+      padding: 0.58rem 0.82rem;
+      border-radius: 10px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chip:hover {
+      transform: none;
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+    }
+
+    .course-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .course-card {
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      padding: 1rem;
+    }
+
+    .course-card h3 {
+      margin: 0 0 0.8rem;
       font-size: 1rem;
     }
 
-    .nav-links { display: flex; gap: .75rem; align-items: center; }
-    .nav-links a {
-      text-decoration: none; color: var(--text); padding: .45rem .65rem; border-radius: 8px;
-      border: 1px solid transparent; transition: background .2s ease, color .2s ease, border-color .2s ease;
-    }
-    .nav-links a:hover { background: var(--surface-2); border-color: var(--border); }
-    .nav-links a.active { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 28%, var(--border)); }
-
-    /* Dark-mode switch — simplified, no gradient */
-    .switch { position: relative; width: 48px; height: 28px; display: inline-block; }
-    .switch input { display: none; }
-    .slider {
-      position: absolute; inset: 0; cursor: pointer; border-radius: 8px;
-      background: var(--surface-2); border: 1px solid var(--border);
-      transition: background .25s ease;
-    }
-    .slider:before {
-      content: ""; position: absolute; height: 20px; width: 20px; left: 4px; top: 3px;
-      background: var(--accent); border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,.35);
-      transition: transform .25s ease, background .25s ease;
-    }
-    #themeToggle:checked + .slider:before { transform: translateX(20px); background: var(--accent-2); }
-
-    /* ================= HERO ================= */
-    .hero { padding: 4.5rem 0 3rem; }
-    .hero-grid { display: grid; gap: 2rem; align-items: center; grid-template-columns: .9fr 1.1fr; }
-    @media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } }
-
-    .headline { font-size: var(--step-4); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 .75rem; }
-    .accent { color: var(--accent); } /* MINIMAL: remove gradient text */
-    .lead { font-size: var(--step-0); color: var(--muted); max-width: 72ch; }
-
-    .cta-row { display: flex; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
-      padding: .65rem .9rem; border-radius: 10px; font-weight: 600; letter-spacing: .2px;
-      background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
-      transition: transform .12s ease, background .2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); background: color-mix(in oklab, var(--surface-2) 85%, var(--accent) 15%); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-
-    .btn.linkedin, .btn[href*="github.com"] { background: #0077b5; color: #fff; border-color: #0077b5; }
-
-    .hero-media { display: grid; place-items: center; }
-    .hero-media img {
-      width: clamp(220px, 28vw, 420px); aspect-ratio: 1/1; object-fit: cover;
-      border-radius: 16px; border: 1px solid var(--border); box-shadow: none; /* MINIMAL */
+    .course-columns {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    /* ============= Sections & Titles (no gradients) ============= */
-    .section { padding: 2.2rem 0; }
-    .section-title { margin: 2.2rem 0 1rem; }
-    .section-title span {
-      display: inline-block; font-weight: 800; font-size: var(--step-2);
-      letter-spacing: .2px; padding-bottom: .4rem; border-bottom: 2px solid var(--accent);
+    .course-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 0.95rem;
     }
 
-    /* ============= Cards ============= */
-    .card {
+    .course-card ul {
+      margin: 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+    }
+
+    .course-card li+li {
+      margin-top: 0.3rem;
+    }
+
+    .course-item .item-body {
+      padding-right: 1rem;
+    }
+
+    .site-footer {
+      padding: 0 0 2rem;
+    }
+
+    .footer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.1rem; margin: 1rem 0;
-      transition: border-color .2s ease, transform .12s ease;
+      box-shadow: var(--shadow);
     }
-    .card:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); }
-    .card.compact { padding: .9rem 1rem; }
 
-    .card-header { margin-bottom: .35rem; }
-    .h3 { font-size: var(--step-1); margin: 0 0 .2rem; }
-    .h4 { font-size: 1.05rem; margin: .6rem 0 .4rem; }
-    .meta { color: var(--muted); font-size: var(--step--1); margin: 0; }
-
-    .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
-    .chip, .link-badge {
-      display: inline-flex; align-items: center; gap: .35rem; text-decoration: none;
-      font-weight: 600; padding: .35rem .55rem; /* compact */
-      border-radius: 8px;
-      border: 1px solid var(--border); color: var(--text);
-      background: var(--surface-2);
-      transition: border-color .2s ease, background .2s ease, transform .12s ease;
-      font-size: var(--step--1);
+    .footer-card p {
+      margin: 0;
+      color: var(--muted);
     }
-    .chip:hover { border-color: color-mix(in oklab, var(--accent) 25%, var(--border)); transform: translateY(-1px); }
 
-    /* ============= Tables / lists ============= */
-    .table { display: grid; gap: 1rem; }
-    .two-col { grid-template-columns: 1fr 1fr; }
-    .three-col { grid-template-columns: repeat(3, 1fr); }
-    @media (max-width: 980px){ .two-col { grid-template-columns: 1fr; } }
-    @media (max-width: 1080px){ .three-col { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 720px){ .three-col { grid-template-columns: 1fr; } }
+    .back-to-top {
+      text-decoration: none;
+      font-weight: 800;
+      color: var(--text);
+    }
 
-    ul.tight { margin: .25rem 0 .5rem; padding-left: 1.1rem; }
-    ul.tight li { margin: .25rem 0; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+    }
 
-    .separator { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 2rem 0; }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
 
-    /* Footer */
-    .footer { margin-top: 3rem; border-top: 1px solid var(--border); background: var(--surface); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; }
-    .back-to-top { text-decoration: none; color: var(--muted); border: 1px solid var(--border); padding: .45rem .7rem; border-radius: 8px; }
-    .back-to-top:hover { color: var(--text); background: var(--surface-2); }
+    :focus-visible {
+      outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
+      outline-offset: 3px;
+    }
 
-    /* Reveal (respects reduced motion) */
-    .reveal { opacity: 0; transform: translateY(8px); }
-    .reveal.in { opacity: 1; transform: none; transition: opacity .35s ease, transform .35s ease; }
+    @media (max-width: 1100px) {
+      .course-columns {
+        grid-template-columns: 1fr;
+      }
+    }
 
-    /* Focus states */
-    :focus-visible { outline: 2px solid color-mix(in oklab, var(--accent) 65%, transparent); outline-offset: 2px; border-radius: 8px; }
+    @media (max-width: 860px) {
 
-    /* Print-friendly */
+      .site-header-inner,
+      .header-actions {
+        flex-wrap: wrap;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .section-head p {
+        text-align: left;
+      }
+
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-toggle {
+        padding-top: 0;
+      }
+
+      .item-body {
+        padding-left: 1.15rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 1rem), var(--container));
+      }
+
+      .site-header-inner {
+        padding: 0.8rem 0;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      .brand {
+        width: 100%;
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .header-actions {
+        width: 100%;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+      }
+
+      .nav-links {
+        flex: 1 1 auto;
+        width: auto;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 0.6rem 0.72rem;
+        font-size: 0.88rem;
+      }
+
+      .switch {
+        width: 58px;
+        height: 34px;
+        flex: 0 0 58px;
+      }
+
+      .slider::before {
+        width: 24px;
+        height: 24px;
+        left: 4px;
+        top: 4px;
+      }
+
+      #themeToggle:checked+.slider::before {
+        transform: translateX(24px);
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-card,
+      .content-panel,
+      .footer-card {
+        border-radius: 14px;
+      }
+
+      .item-summary {
+        padding: 0.95rem;
+      }
+
+      .item-body {
+        padding: 0 0.95rem 0.95rem;
+      }
+    }
+
     @media print {
-      body { background: #fff; color: #000; }
-      .nav, .btn, .switch, .back-to-top { display: none !important; }
-      .card { box-shadow: none; border-color: #ddd; }
-    }
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
 
-    /* ==== Dark mode contrast boost for skills & project cards ==== */
-    :root:not([data-theme="light"]) .card { background: #151922; border-color: #2b3340; }
-    :root:not([data-theme="light"]) .h3,
-    :root:not([data-theme="light"]) .h4 { color: #eef1f6; }
-    :root:not([data-theme="light"]) .meta { color: #b7bfce; }
-    :root:not([data-theme="light"]) .chip,
-    :root:not([data-theme="light"]) .link-badge { background: #1f2530; border-color: #2e3746; color: #e8edf7; }
-    :root:not([data-theme="light"]) .chip:hover { border-color: color-mix(in oklab, var(--accent) 35%, #2e3746); background: #232b38; }
-    :root:not([data-theme="light"]) .table .h4 { color: #f1f4fa; }
-    :root:not([data-theme="light"]) ul.tight li { color: #e6ebf5; }
-    :root:not([data-theme="light"]) .section-title span { border-bottom-width: 3px; }
+      .site-header,
+      .cta-row,
+      .quick-links,
+      .back-to-top {
+        display: none !important;
+      }
 
-    /* ===== Responsive refinements (desktop → phone) ===== */
-    @media (max-width: 1200px) {
-      .container { width: min(94%, var(--container-md)); }
-    }
-    @media (max-width: 900px) {
-      .hero { padding: 3.5rem 0 2rem; }
-      .section { padding: 1.6rem 0; }
-      .card { padding: .85rem 1rem; }
-      .nav { padding: .6rem .8rem; }
-      .nav-links { flex-wrap: wrap; row-gap: .35rem; }
-      .three-col { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 880px) {
-      .two-col, .three-col { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
-      .brand { min-width: 42px; height: 42px; border-radius: 8px; }
-      .btn { padding: .55rem .8rem; border-radius: 8px; }
-      .links { gap: .35rem; }
-      .hero-media img { width: min(68vw, 320px); }
-    }
+      .hero-card,
+      .content-panel,
+      .course-card,
+      details.item,
+      .footer-card {
+        box-shadow: none;
+        background: #ffffff;
+      }
 
-    /* ===== Research abstract dropdown (minimalist) ===== */
-    #research .abstract { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    #research .abstract.open { /* height set inline via JS */ }
-    #research .abstract-toggle {
-      display:inline-flex; align-items:center; gap:.4rem; cursor:pointer;
-      padding:.35rem .6rem; border-radius:8px; border:1px solid var(--border);
-      background: transparent; color: var(--text); font-weight:600;
-      transition: background .2s ease, border-color .2s ease, transform .12s ease;
+      details.item {
+        break-inside: avoid;
+      }
+
+      details.item .item-body {
+        display: block !important;
+      }
     }
-    #research .abstract-toggle:hover { background: var(--surface-2); }
-    #research .abstract-toggle .chev { display:inline-block; transition: transform .2s ease; }
-    #research .abstract-toggle[aria-expanded="true"] .chev { transform: rotate(90deg); }
-
-    /* ===== Compact, consistent spacing around abstracts & links ===== */
-    #research .abstract-toggle { margin-bottom: .55rem; }
-    #research .abstract { margin-top: .35rem; }
-    #research .links { margin-top: .65rem; }
-
   </style>
 </head>
 
 <body>
-  <!-- ===== NAVBAR ===== -->
-  <header class="nav" role="banner">
-    <a class="brand" href="#top">DA</a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#research">Research</a>
-      <a href="#experience">Work</a>
-      <a href="#coursework">Coursework</a>
-      <label class="switch" aria-label="Toggle dark mode">
-        <input id="themeToggle" type="checkbox" />
-        <span class="slider"></span>
-      </label>
-    </nav>
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">DA</span>
+        <span class="brand-text">
+          <strong>Dheer Avashia</strong>
+        </span>
+      </a>
+
+      <div class="header-actions">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#research">Research</a>
+          <a href="#experience">Work</a>
+          <a href="#coursework">Coursework</a>
+        </nav>
+
+        <label class="switch" aria-label="Toggle dark mode">
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section id="top" class="hero container">
-    <div class="hero-grid">
-      <div class="hero-media reveal">
-        <img src="Images/IMG_8641_OG - Copy- SQAURE.JPEG" alt="Portrait of Dheer Avashia" loading="eager" decoding="async" fetchpriority="high" />
-      </div>
-      <div class="hero-text reveal">
-        <h1 class="headline">Hello, I'm <span class="accent">Dheer Avashia</span></h1>
-        <p class="lead">
-          I am currently a PhD student in Economics at the University of Arizona, applying <strong>Behavioral-Industrial Organizational</strong> perspectives and methods to study how <strong>AI shapes consumer behavior and markets</strong>. </p>
-         <p class="lead"> When I am not fighting with myself over identification, I am probably trying out a new musical instrument or optimizing (some would say unnecessarily) the brewing process of my next cup of coffee.  
-        </p>
-        <div class="cta-row">
-          <a class="btn linkedin" href="https://www.linkedin.com/in/dheeravashia" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://github.com/dheeravashia" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://eller.arizona.edu/person/dheer-avashia" target="_blank" rel="noopener">Contact</a>
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card reveal">
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="Images/IMG_8641_OG - Copy- SQAURE.JPEG" alt="Portrait of Dheer Avashia"
+              loading="eager" decoding="async" fetchpriority="high" />
+          </div>
+
+          <div>
+            <span class="eyebrow">Portfolio</span>
+            <h1>Hello, I'm <span>Dheer Avashia</span></h1>
+            <p class="lead">
+              I am currently a PhD student in Economics at the University of Arizona, applying
+              <strong>Behavioral-Industrial Organizational</strong> perspectives and methods to study how <strong>AI
+                shapes consumer behavior and markets</strong>.
+            </p>
+            <p class="lead">
+              When I am not fighting with myself over identification, I am probably trying out a new musical instrument
+              or optimizing (some would say unnecessarily) the brewing process of my next cup of coffee.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn linkedin" href="https://www.linkedin.com/in/dheeravashia" target="_blank"
+                rel="noopener">LinkedIn</a>
+              <a class="btn" href="https://github.com/dheeravashia" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn btn-ghost" href="https://eller.arizona.edu/person/dheer-avashia" target="_blank"
+                rel="noopener">Contact</a>
+            </div>
+
+            <div class="quick-links" aria-label="Section shortcuts">
+              <a class="pill" href="#research">Jump to Research</a>
+              <a class="pill" href="#experience">Jump to Work Experience</a>
+              <a class="pill" href="#coursework">Jump to Coursework</a>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <div class="container main-grid">
+      <div class="content-column">
+        <section id="research" class="content-panel reveal">
+          <div class="section-head">
+            <h2>Research</h2>
+          </div>
+
+          <div class="stack">
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Free Information, Costly Search: AI Summaries, Consideration, And Verification</h3>
+                  <p class="meta">Third-Year Paper, University Of Arizona</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <p>
+                  This paper develops a demand-side model of search in which entering an option (product) reveals a free
+                  AI-generated compression of binary signals (reviews) and deeper individual inspection of those signals
+                  is costly. I embed a compression-based information structure into a dynamic search environment with
+                  both across-option consideration and within-option verification. I show analytically, for general
+                  signal-set sizes, that better underlying reviews lead to less review-reading when AI summaries are
+                  present: the verification threshold diverges as raw-signal precision approaches complete certainty,
+                  and the set of states in which costly inspection is optimal shrinks near perfect precision. The
+                  mechanism is that AI summaries compress the same evidence consumers would unpack at a cost, so
+                  improving raw-signal precision simultaneously strengthens the summary and devalues the underlying
+                  signals. By numerically solving the model with and without AI, I find that the costly search freed by
+                  AI-driven verification substitution can expand consideration sets, creating a reallocation from search
+                  depth to search breadth whose net effect on choice-quality outcomes is parameterdependent.
+                </p>
+                <p class="links">
+                  <a class="chip" href="https://www.dheeravashia.com/assets/Avashia_Search_With_AI_2026.pdf"
+                    target="_blank" rel="noopener">Paper</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>The Impact of AI-generated Review Summaries: Evidence From Indian E-Commerce</h3>
+                  <p class="meta">Second-Year Paper, University Of Arizona</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <p>
+                  The rise of AI-generated overviews is transforming how consumers interact with information in digital
+                  markets. These overviews, powered by the development of large language models (LLMs), condense vast
+                  volumes of information into accessible narratives, potentially mitigating the effects of information
+                  overload and providing better insights into product characteristics. In this research, I focus on AI
+                  overviews of product reviews on e-commerce platforms and investigate whether they influence consumer
+                  purchasing decisions by affecting product-level sales and pricing. Leveraging variation in the
+                  adoption of these overviews across the two largest e-commerce platforms in India — Amazon and Flipkart
+                  — I apply a difference-in-differences framework, with three-way fixed effects, to isolate the effect
+                  of AI summaries. I aim to provide new, and among one of the first, to my knowledge, evidence on the
+                  role of algorithmic information processing and presentation of consumer reviews in shaping consumer
+                  behavior, market outcomes, and platform competition in digital markets.
+                </p>
+                <p class="links">
+                  <a class="chip"
+                    href="https://www.dheeravashia.com/assets/Avashia_AI_overviews_Second_year_presentation.pdf"
+                    target="_blank" rel="noopener">Slides</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Modeling Financial Volatility with Multinomial Generalized Auto-Regressive Conditional
+                    Heteroskedasticity</h3>
+                  <p class="meta">Term Paper, University Of Arizona</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <p>
+                  Modeling the levels of volatility for a portfolio of assets has been imperative in analyzing
+                  individual financial decisions. In this paper, I explore models that allow for volatility clustering
+                  (ARCH and GARCH) and specifically look at a five-year dataset of the S&amp;P 500 stocks to model the
+                  returns to a portfolio of assets using Multinomial GARCH (DCCM).
+                </p>
+                <p class="links">
+                  <a class="chip"
+                    href="https://www.dheeravashia.com/assets/Financial_Volatility_with_Conditional_Heteroskedasticity_Avashia_2024.pdf"
+                    target="_blank" rel="noopener">Paper</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Financial Overconfidence and Shocks</h3>
+                  <p class="meta">Economics Honors Senior Thesis, University of The South</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <p>
+                  Empirical evidence for the availability heuristic causing an erroneous meta-cognitive judgment of
+                  one's objective financial knowledge. The reasons for disparities in financial knowledge are often
+                  explored through the lens of policy action and education. However, in this research, we study the role
+                  of cognitive bias in financial knowledge to explain disparities in perceived and actual financial
+                  knowledge. We propose a model of overconfidence and then attempt to estimate how variance in levels of
+                  overconfidence can be explained specifically through the lens of exposures to financial shocks. Our
+                  analysis finds gender and educational differences in levels of financial overconfidence and finds
+                  empirical evidence that higher exposure to negative financial shocks predicts lower levels of
+                  overconfidence.
+                </p>
+                <p class="links">
+                  <a class="chip" href="https://www.dheeravashia.com/assets/Overconfidence%20and%20Shocks.pdf"
+                    target="_blank" rel="noopener">Slides</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>The Theory of Huffman Encoding</h3>
+                  <p class="meta">Mathematics Senior Thesis, University of The South</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>In this project, I surveyed research in Algorithmic Information Theory. I understood the functions
+                    and mechanisms of Turing Machines, fundamental information theory concepts: Probability, Entropy,
+                    and Complexity. I then, specifically, focused on Huffman's Encoding Problem, analyzed proofs of
+                    optimal lossless encoding, theories of fundamental binary data encoding, and studied Huffman trees.
+                  </li>
+                </ul>
+                <p class="links">
+                  <a class="chip" href="https://www.dheeravashia.com/assets/Huffman%20Encoding%20Problem.pdf"
+                    target="_blank" rel="noopener">Slides</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Bubble Formation in Experimental Spot Asset Markets</h3>
+                  <p class="meta">Sewanee Undergraduate Research, University of The South</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Surveyed experimental economics literature on price bubbles and crashes in spot asset markets.
+                  </li>
+                </ul>
+                <p class="links">
+                  <a class="chip"
+                    href="https://www.dheeravashia.com/assets/Information%2C%20Speculation%20And%20Bubble%20Formation%20In%20Experimental%20Crypto-Currency%20Markets.pdf"
+                    target="_blank" rel="noopener">Paper</a>
+                </p>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Social Media and Orthrexia Nervosa Onset In College Students</h3>
+                  <p class="meta">Psychology Term Paper, University Of The South</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Eating disorders are becoming highly prevalent in college students, as several studies have
+                    reported a greater presence of eating disorders on college campuses as compared to the general
+                    population (Fitzsimmons-Craft et al., 2019). Image expectations might help better understand the
+                    reasons for the onset of ON in college students. One such factor is Imaginary Audience. Imaginary
+                    Audience is a state in which individuals believe they are actively being judged by peers (Elkind
+                    &amp; Bowen, 1979); it is one of the most frequent ideation states faced by adolescents (O'Connor,
+                    1995). In this study, social media use is expected to predict levels of ON in college students, with
+                    Imaginary Audience as a potential mediating variable. Current literature search reveals sparse
+                    research on the connection between these two variables. This study uses an online survey to gather
+                    data about three constructs: the presence of an imaginary audience, social media use, and the
+                    prevalence of ON. The study predicts that a higher influence of social media and the prevalence of
+                    an imaginary audience will be positively associated with higher levels of ON in college students.
+                  </li>
+                </ul>
+                <p class="links">
+                  <a class="chip"
+                    href="https://www.dheeravashia.com/assets/Dheer%20Avashia%20Orthorexia%20Nervosa.docx.pdf"
+                    target="_blank" rel="noopener">Paper</a>
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="experience" class="content-panel reveal">
+          <div class="section-head">
+            <h2>Work Experience</h2>
+          </div>
+
+          <div class="stack">
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Teaching Assistant</h3>
+                  <p class="meta">University of Arizona, Tucson, Arizona</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Economics 200: Introductory Economics (Fall 2023)</li>
+                  <li>Economics 330: Macroeconomics and Global Institutions Policy — TA (Spring 2024)</li>
+                  <li>Economics 337: Economics of Politics and Policymaking (Spring 2024)</li>
+                  <li>Economics 407: Economics of Strategy (Fall 2024)</li>
+                  <li>Economics 443: International Trade (Fall 2024)</li>
+                  <li>PSY 230: Psychological Measurement and Statistics (Spring 2025)</li>
+                  <li>Economics 443: International Trade (Fall 2025)</li>
+                  <li>Economics 330: Macroeconomics and Global Institutions Policy (Fall 2025)</li>
+                  <li>Economics 550 Economics for Managers — MBA (Fall 2025)</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>User Experience &amp; Marketing</h3>
+                  <p class="meta">Sayaji Seeds, Ahmedabad, India | Apr 2020 – Aug 2020</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Researched business models and digital strategies of firms catering to the Indian rural market.
+                  </li>
+                  <li>Conceptualized and implemented, alongside the CEO, the marketing strategy for promoting the
+                    company's new mobile application, reaching over 2000 potential clients.</li>
+                  <li>Created KPI metrics, alongside CEO and UX designers, for a pilot study helping measure user
+                    accessibility and retention for the company's new mobile application, which now has over 5000 users.
+                  </li>
+                  <li>Researched and presented a comprehensive report on rural marketing. Worked with digital marketing
+                    head to run ad campaigns (Google Ads, IVR, on-ground marketing) increasing users by 20%.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Business Strategy &amp; Content Production</h3>
+                  <p class="meta">Connect2Teach, Ahmedabad, India | Mar 2019 – Aug 2019</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Analyzed business-to-business models and growth strategy of 10 major companies in the online
+                    learning industry. Generated user profiles and identified key trends in the executive learning
+                    industry and presented insights to CEO.</li>
+                  <li>Built several user profiles and led presentations on ideas for optimizing the company's product.
+                  </li>
+                  <li>Authored, edited, and published over 5 articles for on and off-page blogging.</li>
+                  <li>Ran ads and performed SEO optimizing, alongside the Digital marketing team, boosting social media
+                    followers by 30%.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>VP Recruitment &amp; Greek Life Assistant</h3>
+                  <p class="meta"><a href="https://issuu.com/sewaneegreeklife/docs/greek_life_annual_report_final"
+                      target="_blank" rel="noopener">University Of The South Greek Life Office</a>, Sewanee TN | Aug
+                    2021 – May 2023</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Assisted the director of Greek Life in everyday tasks.</li>
+                  <li>Created forms and surveys to gather data about Greek life organizations on campus; used Excel to
+                    format and present data to the head of Greek Life.</li>
+                  <li>Planned a <a href="https://new.sewanee.edu/hazing/" target="_blank" rel="noopener">hazing
+                      prevention</a> marketing campaign to create awareness about hazing and provide resources.</li>
+                  <li>Made the Greek Life culture on campus safer and more welcoming.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Residential Assistant</h3>
+                  <p class="meta">University of The South Residential Life Office, Sewanee TN | Jan 2021 – May 2023</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Designed and implemented over 15 programs to foster relationships and make residents feel safe and
+                    comfortable in residential spaces.</li>
+                  <li>Applied QPR training and restorative techniques to help extinguish sensitive situations and
+                    resolve conflicts.</li>
+                  <li>Acted as a student leader and role model for over 200 residents, cultivating living spaces with a
+                    strong sense of community.</li>
+                  <li>One of the most esteemed leadership positions on campus.</li>
+                  <li>Supervised residence halls with 150+ students, responded to emergencies, and reported to area
+                    manager.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Marketing Intern</h3>
+                  <p class="meta">University of the South Wellness Center, Sewanee, TN | Sep 2019 – Aug 2021</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Researched student taboos surrounding mental health, evaluated data to devise a social media
+                    marketing plan and content calendar; increased student interaction and awareness by over 30%.</li>
+                  <li>Collaborated with the director of the Wellness Center and student leaders on campus to plan and
+                    implement 11 events promoting mental health awareness.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Lead Barista</h3>
+                  <p class="meta">University of the South, Sewanee, TN | Sep 2019 – May 2023</p>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <ul class="tight">
+                  <li>Ensured smooth operation during shifts by optimally allocating tasks</li>
+                  <li>Produced high-quality (at least I thought so) lattes and sandwiches</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="coursework" class="content-panel reveal">
+          <div class="section-head">
+            <h2>Coursework</h2>
+          </div>
+
+          <div class="stack">
+            <details class="item course-item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>Graduate Coursework</h3>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <div class="course-grid">
+                  <div class="course-card">
+                    <h4>Quantitative / Applied</h4>
+                    <ul>
+                      <li>Applied Economic Analysis</li>
+                      <li>Experimental Economics</li>
+                      <li>Industrial-Organizational Economics</li>
+                      <li>Labor Economics</li>
+                      <li>Computational Methods — Dynamic Models</li>
+                      <li>Applied NLP</li>
+                    </ul>
+                  </div>
+                  <div class="course-card">
+                    <h4>Theory</h4>
+                    <ul>
+                      <li>Econometrics</li>
+                      <li>High Dimensional Econometrics</li>
+                      <li>Advanced Game Theory</li>
+                      <li>Microeconomic Theory</li>
+                      <li>Mechanism Design</li>
+                      <li>Behavioral Economics</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="item course-item">
+              <summary class="item-summary">
+                <div class="item-heading">
+                  <h3>BSc Coursework</h3>
+                </div>
+                <span class="summary-toggle">Expand</span>
+              </summary>
+              <div class="item-body">
+                <div class="course-columns">
+                  <div>
+                    <h4>Mathematics</h4>
+                    <ul>
+                      <li>Linear Algebra</li>
+                      <li>Multidimensional Calculus</li>
+                      <li>Differential Equations</li>
+                      <li>Abstract Algebra 1</li>
+                      <li>Abstract Algebra 2</li>
+                      <li>Real Analysis</li>
+                      <li>Probability &amp; Statistics</li>
+                      <li>Time Series</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Economics</h4>
+                    <ul>
+                      <li>Microeconomic Theory</li>
+                      <li>Labor Economics</li>
+                      <li>Industrial Organizational Economics</li>
+                      <li>Game Theory</li>
+                      <li>Econometrics</li>
+                      <li>Seminar (Pass with distinction)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Psychology</h4>
+                    <ul>
+                      <li>Research Methods and Data Analysis</li>
+                      <li>Child Development</li>
+                      <li>Cognitive Psychology</li>
+                      <li>Action Research Lab</li>
+                      <li>Personality Psychology</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- ===== RESEARCH ===== -->
-  <section id="research" class="section container">
-    <h2 class="section-title"><span>Research</span></h2>
-     
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Free Information, Costly Search: AI Summaries, Consideration, And Verification</h3>
-        <p class="meta">Economics Department, University Of Arizona, Tucson AZ</p>
-      </header>
-      <p>
-       This paper develops a demand-side model of search in which entering an option (product) reveals a free AI-generated compression of binary signals (reviews) and deeper individual inspection of those signals is costly. I embed a compression-based information structure into a dynamic search environment with both across-option consideration and within-option verification. I show analytically, for general signal-set sizes, that better underlying reviews lead to less review-reading when AI summaries are present: the verification threshold diverges as raw-signal precision approaches complete certainty, and the set of states in which costly inspection is optimal shrinks near perfect precision. The mechanism is that AI summaries compress the same evidence consumers would unpack at a cost, so improving raw-signal precision simultaneously strengthens the summary and devalues the underlying signals. By numerically solving the model with and without AI, I find that the costly search freed by AI-driven verification substitution can expand consideration sets, creating a reallocation from search depth to search breadth whose net effect on choice-quality outcomes is parameterdependent.
-      </p>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Avashia_Search_With_AI_2026.pdf" target="_blank" rel="noopener">Paper</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">The Impact of AI-generated Review Summaries: Evidence From Indian E-Commerce</h3>
-        <p class="meta">Economics Department, University Of Arizona, Tucson AZ</p>
-      </header>
-      <p>
-        The rise of AI-generated overviews is transforming how consumers interact with information in digital markets. These overviews, powered by the development of large language models (LLMs), condense vast volumes of information into accessible narratives, potentially mitigating the effects of information overload and providing better insights into product characteristics. In this research, I focus on AI overviews of product reviews on e-commerce platforms and investigate whether they influence consumer purchasing decisions by affecting product-level sales and pricing. Leveraging variation in the adoption of these overviews across the two largest e-commerce platforms in India — Amazon and Flipkart — I apply a difference-in-differences framework, with three-way fixed effects, to isolate the effect of AI summaries. I aim to provide new, and among one of the first, to my knowledge, evidence on the role of algorithmic information processing and presentation of consumer reviews in shaping consumer behavior, market outcomes, and platform competition in digital markets.
-      </p>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Avashia_AI_overviews_Second_year_presentation.pdf" target="_blank" rel="noopener">Slides</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3"> Modeling Financial Volatility with Multinomial Generalized Auto-Regressive Conditional Heteroskedasticity</h3>
-        <p class="meta">Economics Department, University Of Arizona, Tucson AZ</p>
-      </header>
-      <p>
-        Modeling the levels of volatility for a portfolio of assets has been imperative in analyzing individual financial decisions. In this paper, I explore models that allow for volatility clustering (ARCH and GARCH) and specifically look at a five-year dataset of the S&P 500 stocks to model the returns to a portfolio of assets using Multinomial GARCH (DCCM). 
-      </p>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Financial_Volatility_with_Conditional_Heteroskedasticity_Avashia_2024.pdf" target="_blank" rel="noopener">Paper</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Economics Thesis (Hons.)</h3>
-        <p class="meta">Economics Department, University Of The South, Sewanee TN | Economics Department, University Of Arizona, Tucson AZ | Aug 2022 – Aug 2023</p>
-      </header>
-      <p>
-        Empirical evidence for the availability heuristic causing an erroneous meta-cognitive judgment of one's objective financial knowledge. The reasons for disparities in financial knowledge are often explored through the lens of policy action and education. However, in this research, we study the role of cognitive bias in financial knowledge to explain disparities in perceived and actual financial knowledge. We propose a model of overconfidence and then attempt to estimate how variance in levels of overconfidence can be explained specifically through the lens of exposures to financial shocks. Our analysis finds gender and educational differences in levels of financial overconfidence and finds empirical evidence that higher exposure to negative financial shocks predicts lower levels of overconfidence.
-      </p>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Overconfidence%20and%20Shocks.pdf" target="_blank" rel="noopener">Slides</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">The Theory of Huffman Encoding</h3>
-        <p class="meta">Mathematics Department | Sewanee, TN | Aug 2022 – May 2023</p>
-      </header>
-      <ul class="tight">
-        In this project, I surveyed research in Algorithmic Information Theory. I understood the functions and mechanisms of Turing Machines, fundamental information theory concepts: Probability, Entropy, and Complexity. I then, specifically, focused on Huffman's Encoding Problem, analyzed proofs of optimal lossless encoding, theories of fundamental binary data encoding, and studied Huffman trees.
-      </ul>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Huffman%20Encoding%20Problem.pdf" target="_blank" rel="noopener">Slides</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Economics Researcher</h3>
-        <p class="meta">Sewanee Undergraduate Research, Sewanee TN | May 2021 – Aug 2021</p>
-      </header>
-      <ul class="tight">
-        Surveyed experimental economics literature on price bubbles and crashes in spot asset markets.
-      </ul>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Information%2C%20Speculation%20And%20Bubble%20Formation%20In%20Experimental%20Crypto-Currency%20Markets.pdf" target="_blank" rel="noopener">Paper</a>
-      </p>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Psychology Research Fellow</h3>
-        <p class="meta">Psychology Department, University Of The South, Sewanee, TN | Jan 2021 – May 2021</p>
-      </header>
-      <ul class="tight">
-        Eating disorders are becoming highly prevalent in college students, as several studies have reported a greater presence of eating disorders on college campuses as compared to the general population (Fitzsimmons-Craft et al., 2019). Image expectations might help better understand the reasons for the onset of ON in college students. One such factor is Imaginary Audience. Imaginary Audience is a state in which individuals believe they are actively being judged by peers (Elkind & Bowen, 1979); it is one of the most frequent ideation states faced by adolescents (O'Connor, 1995). In this study, social media use is expected to predict levels of ON in college students, with Imaginary Audience as a potential mediating variable. Current literature search reveals sparse research on the connection between these two variables. This study uses an online survey to gather data about three constructs: the presence of an imaginary audience, social media use, and the prevalence of ON. The study predicts that a higher influence of social media and the prevalence of an imaginary audience will be positively associated with higher levels of ON in college students.
-      </ul>
-      <p class="links">
-        <a class="chip" href="https://www.dheeravashia.com/assets/Dheer%20Avashia%20Orthorexia%20Nervosa.docx.pdf" target="_blank" rel="noopener">Paper</a>
-      </p>
-    </article>
-  </section>
-
-  <!-- ===== EXPERIENCE ===== -->
-  <section id="experience" class="section container">
-    <h2 class="section-title"><span>Work Experience</span></h2>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Teaching Assistant</h3>
-        <p class="meta">University of Arizona, Tucson, Arizona</p>
-      </header>
-      <ul class="tight">
-        <li>Economics 200: Introductory Economics (Fall 2023)</li>
-        <li>Economics 330: Macroeconomics and Global Institutions Policy — TA (Spring 2024)</li>
-        <li>Economics 337: Economics of Politics and Policymaking (Spring 2024)</li>
-        <li>Economics 407: Economics of Strategy (Fall 2024)</li>
-        <li>Economics 443: International Trade (Fall 2024)</li>
-        <li>PSY 230: Psychological Measurement and Statistics (Spring 2025)</li>
-        <li>Economics 443: International Trade (Fall 2025)</li>
-        <li>Economics 330: Macroeconomics and Global Institutions Policy (Fall 2025)</li>
-        <li>Economics 550 Economics for Managers — MBA (Fall 2025)</li>
-      </ul>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">User Experience & Marketing</h3>
-        <p class="meta">Sayaji Seeds, Ahmedabad, India | Apr 2020 – Aug 2020</p>
-      </header>
-      <ul class="tight">
-        <li>Researched business models and digital strategies of firms catering to the Indian rural market.</li>
-        <li>Conceptualized and implemented, alongside the CEO, the marketing strategy for promoting the company's new mobile application, reaching over 2000 potential clients.</li>
-        <li>Created KPI metrics, alongside CEO and UX designers, for a pilot study helping measure user accessibility and retention for the company's new mobile application, which now has over 5000 users.</li>
-        <li>Researched and presented a comprehensive report on rural marketing. Worked with digital marketing head to run ad campaigns (Google Ads, IVR, on-ground marketing) increasing users by 20%.</li>
-      </ul>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Business Strategy & Content Production</h3>
-        <p class="meta">Connect2Teach, Ahmedabad, India | Mar 2019 – Aug 2019</p>
-      </header>
-      <ul class="tight">
-        <li>Analyzed business-to-business models and growth strategy of 10 major companies in the online learning industry. Generated user profiles and identified key trends in the executive learning industry and presented insights to CEO.</li>
-        <li>Built several user profiles and led presentations on ideas for optimizing the company's product.</li>
-        <li>Authored, edited, and published over 5 articles for on and off-page blogging.</li>
-        <li>Ran ads and performed SEO optimizing, alongside the Digital marketing team, boosting social media followers by 30%.</li>
-      </ul>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">VP Recruitment & Greek Life Assistant</h3>
-        <p class="meta"><a href="https://issuu.com/sewaneegreeklife/docs/greek_life_annual_report_final" target="_blank" rel="noopener">University Of The South Greek Life Office</a>, Sewanee TN | Aug 2021 – May 2023</p>
-      </header>
-      <ul class="tight">
-        <li>Assisted the director of Greek Life in everyday tasks.</li>
-        <li>Created forms and surveys to gather data about Greek life organizations on campus; used Excel to format and present data to the head of Greek Life.</li>
-        <li>Planned a <a href="https://new.sewanee.edu/hazing/" target="_blank" rel="noopener">hazing prevention</a> marketing campaign to create awareness about hazing and provide resources.</li>
-        <li>Made the Greek Life culture on campus safer and more welcoming.</li>
-      </ul>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Residential Assistant</h3>
-        <p class="meta">University of The South Residential Life Office, Sewanee TN | Jan 2021 – May 2023</p>
-      </header>
-      <ul class="tight">
-        <li>Designed and implemented over 15 programs to foster relationships and make residents feel safe and comfortable in residential spaces.</li>
-        <li>Applied QPR training and restorative techniques to help extinguish sensitive situations and resolve conflicts.</li>
-        <li>Acted as a student leader and role model for over 200 residents, cultivating living spaces with a strong sense of community.</li>
-        <li>One of the most esteemed leadership positions on campus.</li>
-        <li>Supervised residence halls with 150+ students, responded to emergencies, and reported to area manager.</li>
-      </ul>
-    </article>
-
-    <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Marketing Intern</h3>
-        <p class="meta">University of the South Wellness Center, Sewanee, TN | Sep 2019 – Aug 2021</p>
-      </header>
-      <ul class="tight">
-        <li>Researched student taboos surrounding mental health, evaluated data to devise a social media marketing plan and content calendar; increased student interaction and awareness by over 30%.</li>
-        <li>Collaborated with the director of the Wellness Center and student leaders on campus to plan and implement 11 events promoting mental health awareness.</li>
-      </ul>
-    </article>
-
-      <article class="card reveal">
-      <header class="card-header">
-        <h3 class="h3">Lead Barista</h3>
-        <p class="meta">University of the South, Sewanee, TN | Sep 2019 – May 2023</p>
-      </header>
-      <ul class="tight">
-        <li>Ensured smooth operation during shifts by optimally allocating tasks</li>
-        <li>Produced high-quality (at least I thought so) lattes and sandwiches </li>
-
-      </ul>
-    </article>
-  </section>
-
-  <!-- ===== COURSEWORK (wrapped + aligned) ===== -->
-  <section id="coursework" class="section container">
-    <h2 class="section-title"><span>Graduate Coursework</span></h2>
-    <div class="card reveal compact">
-      <div class="table two-col">
-        <div class="table-col">
-          <h4 class="h4">Quantitative / Applied</h4>
-          <ul class="tight">
-            <li>Applied Economic Analysis</li>
-            <li>Experimental Economics</li>
-            <li>Industrial-Organizational Economics</li>
-            <li>Labor Economics</li>
-            <li>Computational Methods — Dynamic Models</li>
-            <li>Applied NLP</li>
-          </ul>
-        </div>
-        <div class="table-col">
-          <h4 class="h4">Theory</h4>
-          <ul class="tight">
-            <li>Econometrics</li>
-            <li>High Dimensional Econometrics</li>
-            <li>Advanced Game Theory</li>
-            <li>Microeconomic Theory</li>
-            <li>Mechanism Design</li>
-            <li>Behavioral Economics</li>
-          </ul>
-        </div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-card">
+        <p>© 2025 Dheer Avashia. All rights reserved.</p>
+        <a href="#top" class="back-to-top">Back to top ↑</a>
       </div>
-    </div>
-
-    <div class="separator reveal" aria-hidden="true"></div>
-
-    <h2 class="section-title"><span>BSc Coursework</span></h2>
-    <div class="card reveal compact">
-      <div class="table three-col">
-        <div class="table-col">
-          <h4 class="h4">Mathematics</h4>
-          <ul class="tight">
-            <li>Linear Algebra</li>
-            <li>Multidimensional Calculus</li>
-            <li>Differential Equations</li>
-            <li>Abstract Algebra 1</li>
-            <li>Abstract Algebra 2</li>
-            <li>Real Analysis</li>
-            <li>Probability & Statistics</li>
-            <li>Time Series</li>
-          </ul>
-        </div>
-        <div class="table-col">
-          <h4 class="h4">Economics</h4>
-          <ul class="tight">
-            <li>Microeconomic Theory</li>
-            <li>Labor Economics</li>
-            <li>Industrial Organizational Economics</li>
-            <li>Game Theory</li>
-            <li>Econometrics</li>
-            <li>Seminar (Pass with distinction)</li>
-          </ul>
-        </div>
-        <div class="table-col">
-          <h4 class="h4">Psychology</h4>
-          <ul class="tight">
-            <li>Research Methods and Data Analysis</li>
-            <li>Child Development</li>
-            <li>Cognitive Psychology</li>
-            <li>Action Research Lab</li>
-            <li>Personality Psychology</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2025 Dheer Avashia. All rights reserved.</p>
-      <a href="#top" class="back-to-top">Back to top ↑</a>
     </div>
   </footer>
 
   <script>
-    // ================= Theme (system-aware, toggleable) =================
     const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const stored = localStorage.getItem('theme');
-    const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = stored || (preferDark ? 'dark' : 'light');
-    if (initial === 'light') root.setAttribute('data-theme', 'light');
-    if (toggle) toggle.checked = initial === 'light';
-    toggle?.addEventListener('change', () => {
-      const mode = toggle.checked ? 'light' : 'dark';
-      root.setAttribute('data-theme', mode === 'light' ? 'light' : '');
-      if (mode === 'light') localStorage.setItem('theme', 'light');
-      else localStorage.removeItem('theme');
-    });
+    const toggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const startingTheme = savedTheme || (prefersDark ? "dark" : "light");
 
-    // ================= Nav autohide on scroll =================
-    let lastY = window.scrollY; const nav = document.querySelector('.nav');
-    addEventListener('scroll', () => {
-      const y = window.scrollY; const goingDown = y > lastY && y > 24;
-      nav.classList.toggle('hide', goingDown);
-      lastY = y;
-    }, { passive: true });
-
-    // ================= Intersection Reveal (respects reduced motion) =================
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduceMotion) {
-      const io = new IntersectionObserver((entries) => {
-        for (const e of entries) if (e.isIntersecting) e.target.classList.add('in');
-      }, { threshold: .08 });
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    if (startingTheme === "dark") {
+      root.setAttribute("data-theme", "dark");
+      toggle.checked = true;
     }
 
-    // ================= Active link highlighting (now includes #coursework) =================
-    const sections = ['research','experience','coursework'];
-    const links = [...document.querySelectorAll('.nav-links a')];
-    const setActive = () => {
-      let current = sections[0];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top - 120 <= 0) current = id;
+    toggle?.addEventListener("change", () => {
+      const mode = toggle.checked ? "dark" : "light";
+      if (mode === "dark") {
+        root.setAttribute("data-theme", "dark");
+      } else {
+        root.removeAttribute("data-theme");
       }
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-    };
-    addEventListener('scroll', setActive, { passive: true });
-    addEventListener('load', setActive);
+      localStorage.setItem("theme", mode);
+    });
 
-    // ===== Collapsible abstracts on Research cards =====
-    (function(){
-      const cards = document.querySelectorAll('#research .card');
-      cards.forEach(card => {
-        const header = card.querySelector('.card-header');
-        if (!header) return;
-        let candidate = header.nextElementSibling;
-        while (candidate && !(candidate.tagName === 'P' || candidate.tagName === 'UL')) {
-          if (candidate.classList?.contains('links') || candidate.tagName === 'HEADER' || candidate.tagName === 'ARTICLE') return;
-          candidate = candidate.nextElementSibling;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealItems = document.querySelectorAll(".reveal");
+
+    if (reduceMotion) {
+      revealItems.forEach((item) => item.classList.add("in"));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+
+    const trackedSections = ["research", "experience", "coursework"];
+    const navAnchors = document.querySelectorAll('.nav-links a, .section-nav a');
+
+    function updateActiveLinks() {
+      let current = trackedSections[0];
+      trackedSections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= 160) {
+          current = id;
         }
-        if (!candidate) return;
-        const textLen = candidate.textContent.trim().length;
-        if (textLen < 80) return;
-        candidate.classList.add('abstract');
-        candidate.style.maxHeight = '0px';
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'abstract-toggle';
-        btn.setAttribute('aria-expanded','false');
-        btn.innerHTML = '<span class="chev">▶</span><span class="label">Read abstract</span>';
-        candidate.parentNode.insertBefore(btn, candidate);
-        btn.addEventListener('click', () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          if (expanded) {
-            candidate.style.maxHeight = '0px';
-            candidate.classList.remove('open');
-            btn.setAttribute('aria-expanded','false');
-            btn.querySelector('.label').textContent = 'Read abstract';
-          } else {
-            candidate.style.maxHeight = candidate.scrollHeight + 'px';
-            candidate.classList.add('open');
-            btn.setAttribute('aria-expanded','true');
-            btn.querySelector('.label').textContent = 'Hide abstract';
-          }
-        });
-        window.addEventListener('resize', () => {
-          if (btn.getAttribute('aria-expanded') === 'true') {
-            candidate.style.maxHeight = candidate.scrollHeight + 'px';
-          }
-        });
       });
-    })();
+
+      navAnchors.forEach((anchor) => {
+        anchor.classList.toggle("active", anchor.getAttribute("href") === `#${current}`);
+      });
+    }
+
+    updateActiveLinks();
+    window.addEventListener("scroll", updateActiveLinks, { passive: true });
+    window.addEventListener("load", updateActiveLinks);
+
+    document.querySelectorAll("details.item").forEach((item) => {
+      const toggleLabel = item.querySelector(".summary-toggle");
+      const syncLabel = () => {
+        toggleLabel.textContent = item.open ? "Collapse" : "Expand";
+      };
+      syncLabel();
+      item.addEventListener("toggle", syncLabel);
+    });
+
+    document.querySelectorAll("summary a").forEach((anchor) => {
+      anchor.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+    });
   </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
